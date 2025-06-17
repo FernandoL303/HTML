@@ -9,7 +9,7 @@ const supabase=createClient(supabaseUrl,supabaseKey)
 window.onload= obtenerDescuentos;
 
 
-var myid =1;
+var myid =3;
 
 async function obtenerDescuentos(){
 
@@ -27,7 +27,18 @@ lista.innerHTML=''
 
 data.forEach(descuento => {
     const div =document.createElement('div')
-    div.classList.add('card');
+    div.classList.add('coupon');
+
+    const coupontext= document.createElement('p')
+    coupontext.classList.add("coupon-text");
+    coupontext.textContent=`${descuento.nombre}`
+    
+    const couponDis=document.createElement('p')
+    couponDis.classList.add("coupon-dis")
+    couponDis.textContent=`${descuento.porcentaje}`
+    
+    div.appendChild(coupontext);
+    div.appendChild(couponDis)
     
     lista.appendChild(div);
 });
