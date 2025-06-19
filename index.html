@@ -1,33 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset = "UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE-edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-        <title>Red de Afiliados</title>
-        <script src="https://kit.fontawesome.com/686c3f7382.js" crossorigin="anonymous"></script>
-        <script src="BotonesMenu.js"></script>
-        <script type="module" src="main.js"></script> 
-    </head>
-    <body>
-        <div class="Principal">
-            <button class="btnHome"><i class="fa-solid fa-house fa-2xl"></i></button>
-            <h2>Red de Afiliados</h2>
-            <button class="btnMsj"><i class="fa-solid fa-paper-plane fa-2xl"></i></button>
+  <head>
+    <meta charset = "UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Red de Afiliados</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="BotonesMenu.js"></script>
+    <script type="module" src="main.js"></script> 
+  </head>
+  <body>
+    <!-- Menu de Arriba -->
+    <nav class="top-nav">
+      <button class="nav-btn" id="home-btn">
+        <i class="ri-home-line"></i>
+      </button>
+      <h1 class="logo">Red De Afiliados</h1>
+      <button class="nav-btn">
+        <i class="ri-notification-3-line" id="noti-btn"></i>
+      </button>
+    </nav>
+    
+    <!-- Todo lo de en medio -->
+    <div class="coupon-container">
+      <!-- Filtros -->
+      <div class="filter-section">
+        <div class="filter-scroll">
+          <button class="filter-btn active">Todos</button>
+          <button class="filter-btn inactive">Restaurantes</button>
+          <button class="filter-btn inactive">Muebles</button>
+          <button class="filter-btn inactive">Hoteles</button>
+          <button class="filter-btn inactive">Ropa</button>
+          <button class="filter-btn inactive">Electronicos</button>
         </div>
-        <div class="section" id="cardShow">
+      </div>
+        
+      <!-- Cupones(Aqui pon esa madre) -->
+      <div class="coupons-section">
+        <div class="coupon-card">
+          <div class="coupon-content">
+            <div class="coupon-brand">
+              <div class="brand-logo">
+              <img src="https://static.wixstatic.com/media/08bfe9_757c2c33c911412b8a4779bfc9f81086~mv2.png/v1/fill/w_324,h_244,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Bambinos%202.png" 
+              alt="Bambinos Logo">
+              </div>
+              <h2 class="brand-name">Bambinos</h2>
+            </div>
+            <div class="coupon-discount">50%</div>
+          </div>
+        </div>
+        <div class="coupon-card">
+          <div class="coupon-content">
+            <div class="coupon-brand">
+              <div class="brand-logo">
+              <img src="https://static.wixstatic.com/media/08bfe9_757c2c33c911412b8a4779bfc9f81086~mv2.png/v1/fill/w_324,h_244,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Bambinos%202.png" 
+              alt="Bambinos Logo">
+              </div>
+              <h2 class="brand-name">Bambinos</h2>
+            </div>
+            <div class="coupon-discount">50%</div>
+          </div>
+        </div>
+        <div class="coupon-card">
+          <div class="coupon-content">
+            <div class="coupon-brand">
+              <div class="brand-logo">
+              <img src="https://static.wixstatic.com/media/08bfe9_757c2c33c911412b8a4779bfc9f81086~mv2.png/v1/fill/w_324,h_244,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Bambinos%202.png" 
+              alt="Bambinos Logo">
+              </div>
+              <h2 class="brand-name">Bambinos</h2>
+            </div>
+            <div class="coupon-discount">50%</div>
+          </div>
+        </div>
+        <div class="coupon-card">
+          <div class="coupon-content">
+            <div class="coupon-brand">
+              <div class="brand-logo">
+              <img src="https://static.wixstatic.com/media/08bfe9_757c2c33c911412b8a4779bfc9f81086~mv2.png/v1/fill/w_324,h_244,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Bambinos%202.png" 
+              alt="Bambinos Logo">
+              </div>
+              <h2 class="brand-name">Bambinos</h2>
+            </div>
+            <div class="coupon-discount">50%</div>
+          </div>
+        </div>
+        <div class="coupon-card">
+          <div class="coupon-content">
+            <div class="coupon-brand">
+              <div class="brand-logo">
+              <img src="https://static.wixstatic.com/media/08bfe9_757c2c33c911412b8a4779bfc9f81086~mv2.png/v1/fill/w_324,h_244,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Bambinos%202.png" 
+              alt="Bambinos Logo">
+              </div>
+              <h2 class="brand-name">Bambinos</h2>
+            </div>
+            <div class="coupon-discount">50%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Menu de Abajo -->
+    <nav class="bottom-nav">
+      <button class="nav-item" id="catalog-btn">
+        <i class="ri-store-2-line"></i>
+        <span>Catalogo</span>
+      </button>
+      <div class="nav-item nav-center" id="add-coupon-btn">
+        <div class="nav-center-btn">
+          <i class="ri-coupon-fill"></i>
+        </div>
+        <span class="nav-center-text">Añadir Cupon</span>
+      </div>
+      <button class="nav-item" id="profile-btn">
+        <i class="ri-user-line"></i>
+        <span>Perfil</span>
+      </button>
+    </nav>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
             
-
-
-        </div>
-        <div class="submenu">
-            <button class="btnCatalogo"><i class="fa-solid fa-bars fa-2xl"></i></button>
-            <button class="btnAgregar"><i class="fa-solid fa-square-plus fa-2xl"></i></button>
-            <button class="btnPerfil"><i class="fa-solid fa-user fa-2xl"></i></button>
-        </div>
-    </body>
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.classList.add('inactive');
+                    });
+                    
+                    this.classList.remove('inactive');
+                    this.classList.add('active');
+                });
+            });            
+        });
+    </script>
+  </body>
 </html>

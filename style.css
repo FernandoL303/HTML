@@ -1,174 +1,416 @@
 * {
-    padding: 0;
-    box-sizing: border-box;
-    margin: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+:root{
+  --main-color: #fafafa; 
+  --sec-color: #F4F5F9;
+  --third-color: #f0f0f0;
+  --main-accent: #023e7d;
+  --btn-color: #4b5563;
+  --text-color1:  #fafafa;
+  --text-color2:  #4b5563;
+  --text-color3:  #0c0c0c;
+}
+
+.darkmode{
+  --main-color: #1D2125; 
+  --sec-color: #161A1D;
+  --third-color: #101214;
+  --main-accent: #0063cd;
+  --btn-color: #d1d1d1;
+  --text-color1:  #fafafa;
+  --text-color2:  #d1d1d1;
+    --text-color3:  #0c0c0c;
+}
+        
 body {
-    background: #fafafa;
-    padding: 100px;
-    display: flexbox;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--sec-color);
+  width: 100%;
+  min-height: 762px;
+  margin: 0 auto;
+  position: relative;
+}
+        
+/* Menu de arriba */
+nav.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 64px;
+  background-color: var(--main-color);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 50;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+        
+.logo {
+  font-size: 18px;
+  color: var(--main-accent);
+  font-family: 'Montserrat';
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+        
+.nav-btn{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
-.Principal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background-color: #023e7d;
-    padding: 20px;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
+.nav-btn:hover{
+  transform: scale(1.2);
 }
-.btnMsj,.btnCatalogo,.btnAgregar,.btnPerfil,
-.btnHome {
-    background-color: transparent;
-    color:#fafafa;
-    border: none;
-    width: 5%;
-    height: 40px;
+        
+.nav-btn i {
+  font-size: 24px;
+  color: var(--btn-color);
+}       
+        
+/* Cuerpo Principal */
+.coupon-container {
+  height: 100%;
+  width: 100%;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  overflow-y: auto;
+}
+        
+/* Filtros */
+.filter-section {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: var(--main-color);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+        
+.filter-scroll {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+        
+.filter-scroll::-webkit-scrollbar {
+  display: none;
+}
+        
+.filter-btn {
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  flex-shrink: 0;
+}
+        
+.filter-btn.active {
+  background-color: var(--main-accent);
+  color: var(--text-color1);
+}
+        
+.filter-btn.inactive {
+  background-color: var(--third-color);
+  color: var(--text-color2);
+}
+        
+.coupons-section {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+        
+/* Menu de Abajo */
+nav.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 64px;
+  background-color: var(--main-color);
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  z-index: 50;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+        
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: transparent;
+  background-color: var(--main-color);
+}
+        
+.nav-item i {
+  font-size: 24px;
+  color: var(--btn-color);
+}
+        
+.nav-item span {
+  font-size: 12px;
+  margin-top: 4px;
+  color: var(--btn-color);
+}
+        
+.nav-center {
+  position: relative;
+}
+        
+.nav-center-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--main-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+        
+.nav-center-btn i {
+  color: var(--text-color1);
+}
+        
+.nav-center-text {
+  margin-top: 24px;
 }
 
-.btnMsj:hover,.btnCatalogo:hover,.btnAgregar:hover,.btnPerfil:hover,
-.btnHome:hover{
-    transform: scale(1.2);
-}
-
-.Principal h2 {
-    font-size: 24px;
-    font-family: 'Montserrat';
-    color: #fafafa;
-    flex: 3;
-    text-align: center;
-}
-
-.submenu {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background-color: #023e7d;
-    padding: 20px;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-}
-
-.section { 
-    height: 100%;
-    width: 100%; 
-    overflow-y: auto; 
-    scroll-snap-type: y;
-    align-items: center;
-    padding: 20px;
-    max-width: 900px;
-    margin: 0px auto;
-    padding: 0px 16px;
-}
-
-.card {
-    width: 100%;
-    height: 300px;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #023e7d;
-    scroll-snap-align: start;
-    position: relative;
-    margin: 0 auto 30px auto;
-    opacity: 80%;
-
-    -webkit-mask-image: 
-        radial-gradient(circle 30px at 0% 50%, transparent 0%, transparent 30px, black 31px),
-        radial-gradient(circle 30px at 100% 50%, transparent 0%, transparent 30px, black 31px),
+/* Cupones */
+.coupon-card {
+  --dash-color: rgba(255, 255, 255, 0.3);
+  
+  width: 90%;
+  max-width: 700px;
+  height: 150px;
+  background-image: linear-gradient( 90.2deg,  rgba(1,47,95,1) -0.4%, rgba(56,141,217,1) 106.1% );
+  border-radius: 10px;
+  margin: 0 auto 0px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  opacity: 0.9;
+  cursor: pointer;
+  -webkit-mask-image: 
+        radial-gradient(circle 15px at 0% 50%, transparent 0%, transparent 15px, black 16px),
+        radial-gradient(circle 15px at 100% 50%, transparent 0%, transparent 15px, black 16px),
         linear-gradient(black, black);
     -webkit-mask-composite: destination-out;
     mask-image: 
-        radial-gradient(circle 30px at 0% 50%, transparent 0%, transparent 30px, black 31px),
-        radial-gradient(circle 30px at 100% 50%, transparent 0%, transparent 30px, black 31px),
+        radial-gradient(circle 15px at 0% 50%, transparent 0%, transparent 15px, black 16px),
+        radial-gradient(circle 15px at 100% 50%, transparent 0%, transparent 15px, black 16px),
         linear-gradient(black, black);
     mask-composite: exclude;
 
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
-    transition: transform 0.3s ease;
 }
 
-.card:hover {
-  transform: scale(1.08);
-  opacity: 100%;
+.coupon-card:hover {
+  transform: scale(1.03);
+  opacity: 1;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.coupon-content {
+  display: flex;
+  height: 100%;
+  position: relative;
+}
+
+.coupon-brand {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+.coupon-brand::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 20px;
+  bottom: 20px;
+  border-right: 2px dashed var(--dash-color);
+}
+
+.brand-logo {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.brand-name {
+  color: var(--text-color1);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+.coupon-discount {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color1);
+  font-family: 'Montserrat';
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.search-filter-container {
+  position: sticky;
+  width: 100%;
+  top: 0;
+  z-index: 40;
+  background-color: var(--main-color);
+  padding-top: 8px;
+  padding-bottom: 4px;
+}
+    
+.search-container {
+  padding: 0 16px 8px;
+}
+    
+.search-input {
+  width: 100%;
+  padding: 8px 8px 8px 36px;
+  background-color: var(--third-color);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  position: relative;
+}
+    
+.search-icon {
+  position: absolute;
+  left: 28px;
+  top: 10%;
+  transform: translateY(-50%);
+  color: var(--btn-color);
   z-index: 1;
 }
 
-.coupon {
-    width: 90%;
-    max-width: 700px;
-    height: 300px;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #023e7d;
-    scroll-snap-align: start;
-    position: relative;
-    margin: 0 auto 30px auto;
-    opacity: 0.8;
-
-    display: flex;
-    justify-content: left;
-    align-items: flex-end;
-    padding-bottom: 20px;
-
-    -webkit-mask-image: 
-        radial-gradient(circle 30px at 0% 50%, transparent 0%, transparent 30px, black 31px),
-        radial-gradient(circle 30px at 100% 50%, transparent 0%, transparent 30px, black 31px),
-        linear-gradient(black, black);
-    -webkit-mask-composite: destination-out;
-    mask-image: 
-        radial-gradient(circle 30px at 0% 50%, transparent 0%, transparent 30px, black 31px),
-        radial-gradient(circle 30px at 100% 50%, transparent 0%, transparent 30px, black 31px),
-        linear-gradient(black, black);
-    mask-composite: exclude;
-
-    mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;
-    transition: transform 0.3s ease;
+/*Empressas*/
+.companies-list {
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--sec-color);
+}
+    
+.company-card {
+  background-color: var(--main-color);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+    
+.company-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+    
+.company-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+    
+.company-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+    
+.company-logo {
+  width: 64px;
+  height: 64px;
+  background-color: var(--main-color);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+    
+.company-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+    
+.company-details {
+  display: flex;
+  flex-direction: column;
+}
+    
+.company-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-color3);
+}
+    
+.company-category {
+  font-size: 12px;
+  color: var(--text-color2);
+}   
+    
+.arrow-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color3);
 }
 
-.coupon::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 40%;
-  width: 2px;
-  border-left: 2px dashed gray;
-  transform: translateX(-50%);
-}
-
-.coupon-text {
-  color: #fafafa;
-  font-size: 24px;
-  text-align: left;
-  margin: 0px 0px 0px 60px;
-  font-family: 'Montserrat';
-}
-
-.coupon-dis {
-  color: #fafafa;
-  font-size: 96px;
-  text-align: right;
-  margin: 0px 0px 0px 90px;
-  font-family: 'Montserrat';
-}
 .input-field{
   position: relative;
   margin: 20px 0 0 0;
@@ -206,70 +448,33 @@ input:valid ~ label{
   background: #fafafa;
 }
 
-@media screen and (max-width: 720px) {
-  body {
-    padding: 70px 16px 80px 16px; /* Less padding on small screens */
-  }
-
-  .Principal,
-  .submenu {
-    padding: 10px;
-  }
-
-  .Principal h2 {
-    font-size: 18px;
-  }
-
-  .btnMsj,
-  .btnCatalogo,
-  .btnAgregar,
-  .btnPerfil,
-  .btnHome {
-    width: 20%;
-    height: 40px;
-  }
-
-  .card,
-  .coupon {
-    height: 200px;
-    border-radius: 8px;
-    margin: 10px 0px 0px 0px;
-    -webkit-mask-image: 
-        radial-gradient(circle 15px at 0% 50%, transparent 0%, transparent 15px, black 16px),
-        radial-gradient(circle 15px at 100% 50%, transparent 0%, transparent 15px, black 16px),
-        linear-gradient(black, black);
-    -webkit-mask-composite: destination-out;
-    mask-image: 
-        radial-gradient(circle 15px at 0% 50%, transparent 0%, transparent 15px, black 16px),
-        radial-gradient(circle 15px at 100% 50%, transparent 0%, transparent 15px, black 16px),
-        linear-gradient(black, black);
-    mask-composite: exclude;
-
-    mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;
-  }
-
-  .coupon-text {
-    font-size: 18px;
-    margin-left: 30px;
-  }
-
-  .coupon-dis {
-    font-size: 64px;
-    margin-left: 30px;
-  }
-
-  .input-field input {
-    height: 50px;
-    font-size: 16px;
-  }
-
-  .input-field label {
-    font-size: 16px;
-  }
-
-  .input-field {
-    margin-top: 10px;
-  }
+.contBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 30px auto;
+  min-height: 100px;
 }
+.btnCoupon {
+  cursor: pointer;
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #020024 0%, #090979 51%, #00D4FF 100%);
+ }
+
+ .btnCoupon:hover {
+  background-position: right center; 
+}
+
 

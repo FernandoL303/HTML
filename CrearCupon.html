@@ -9,31 +9,67 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css" defer>
         <title>Red de Afiliados</title>
-        <script src="https://kit.fontawesome.com/686c3f7382.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
         <script src="BotonesMenu.js" defer></script>
     </head>
     <body>
-        <div class="Principal">
-            <button class="btnHome"><i class="fa-solid fa-house fa-2xl"></i></button>
-            <h2>Red de Afiliados</h2>
-            <button class="btnMsj"><i class="fa-solid fa-paper-plane fa-2xl"></i></button>
+        <!-- Menu de Arriba -->
+    <nav class="top-nav">
+        <button class="nav-btn" id="home-btn">
+            <i class="ri-home-line"></i>
+        </button>
+        <h1 class="logo">Red De Afiliados</h1>
+        <button class="nav-btn">
+            <i class="ri-notification-3-line" id="noti-btn"></i>
+        </button>
+    </nav>
+        <!-- Todo lo de en medio -->
+    <div class="coupon-container">     
+      <!-- Cupones(Aqui pon esa madre) -->
+      <div class="coupons-section">
+        <div class="coupon-card">
+          <div class="coupon-content">
+            <div class="coupon-brand">
+            <div class="brand-logo">
+            <img src="https://static.wixstatic.com/media/08bfe9_757c2c33c911412b8a4779bfc9f81086~mv2.png/v1/fill/w_324,h_244,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Bambinos%202.png" 
+              alt="Bambinos Logo">
+          </div>
+          <h2 class="brand-name">Bambinos</h2>
         </div>
-        <div class="coupon">
-            <p class="coupon-text">Empresa</p>
-            <p class="coupon-dis">50%</p>
-        </div>
-        <div>
+          <div class="coupon-discount">50%</div>
+      </div>
+    </div>
+        <div class="colorCup">
             <label class="lblColor" for="colorPicker">Color:</label>
-            <input type="color" id="colorPicker" value="#023e7d">
+            <input class="colorCup" type="color" id="colorPicker" value="#023e7d">
         </div>
         <div class="input-field">
             <input type="text" id='input' required spellcheck="false"> 
             <label>Empresa</label>
         </div>
-        <div class="submenu">
-            <button class="btnCatalogo"><i class="fa-solid fa-bars fa-2xl"></i></button>
-            <button class="btnAgregar"><i class="fa-solid fa-square-plus fa-2xl"></i></button>
-            <button class="btnPerfil"><i class="fa-solid fa-user fa-2xl"></i></button>
+        <div class="input-field">
+            <input type="text" id='input2' required spellcheck="false"> 
+            <label>Descuento</label>
         </div>
+        <div class="contBtn" id="addCardBtn">
+            <a class="btnCoupon">Agregar</a>
+        </div>
+        <!-- Menu de Abajo -->
+    <nav class="bottom-nav">
+      <button class="nav-item" id="catalog-btn">
+        <i class="ri-store-2-line"></i>
+        <span>Catalogo</span>
+      </button>
+      <div class="nav-item nav-center" id="add-coupon-btn">
+        <div class="nav-center-btn">
+          <i class="ri-coupon-fill"></i>
+        </div>
+        <span class="nav-center-text">Añadir Cupon</span>
+      </div>
+      <button class="nav-item" id="profile-btn">
+        <i class="ri-user-line"></i>
+        <span>Perfil</span>
+      </button>
+    </nav>
     </body>
 </html>

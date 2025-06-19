@@ -13,8 +13,6 @@ var myid =3;
 
 async function obtenerDescuentos(){
 
-
-
    let { data, error } = await supabase
   .rpc('my_discounts', {
     myid
