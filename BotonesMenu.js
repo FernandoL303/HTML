@@ -63,13 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const btnCoupon = document.querySelector(".btnCoupon");
-  if (btnAgregar) {
+  /*if (btnAgregar) {
     btnAgregar.addEventListener("click", () => {
       localStorage.setItem("addCard", "true");
       window.location.href = "CrearCupon.html";
     });
   }
-
+*/
   const section = document.querySelector(".section");
 
   if (section && localStorage.getItem("addCard") === "true") {

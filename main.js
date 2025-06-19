@@ -8,8 +8,7 @@ const supabase=createClient(supabaseUrl,supabaseKey)
 
 window.onload= obtenerDescuentos;
 
-
-var myid =3;
+var myid =1;
 
 async function obtenerDescuentos(){
 
@@ -18,27 +17,55 @@ async function obtenerDescuentos(){
     myid
   })
 if (error) console.error(error)
+  else{
+    console.log(data)
+  }
 
     const lista=
-document.getElementById("cardShow")
+document.getElementById("coupon-list")
 lista.innerHTML=''
 
 data.forEach(descuento => {
-    const div =document.createElement('div')
-    div.classList.add('coupon');
 
-    const coupontext= document.createElement('p')
-    coupontext.classList.add("coupon-text");
-    coupontext.textContent=`${descuento.nombre}`
-    
-    const couponDis=document.createElement('p')
-    couponDis.classList.add("coupon-dis")
-    couponDis.textContent=`${descuento.porcentaje}`
-    
-    div.appendChild(coupontext);
-    div.appendChild(couponDis)
-    
-    lista.appendChild(div);
+  const coupon=document.createElement('div');
+  coupon.classList.add('coupon-card')
+  
+  const couponContent=document.createElement('div')
+  couponContent.classList.add('coupon-content')
+
+
+  const couponDiscount=document.createElement('div')
+  couponDiscount.classList.add('coupon-discount')
+  couponDiscount.textContent=`${descuento.porcentaje}`
+
+  const couponBrand=document.createElement('div')
+  couponBrand.classList.add('coupon-brand')
+
+
+  const brandName=document.createElement('h2')
+  brandName.classList.add('bran-name')
+  brandName.textContent=`${descuento.nombre}`
+
+  const brandLogo=document.createElement('div')
+  brandLogo.classList.add('brand-logo')
+
+  const img=document.createElement('img')
+  img.src=`${descuento.logourl}`
+
+  console.log(img.src)
+ // img.alt=`${descuento.nombre} Logo`
+
+  brandLogo.appendChild(img)
+
+  couponBrand.appendChild(brandLogo)
+  couponBrand.appendChild(brandName)
+
+  couponContent.appendChild(couponBrand)
+  couponContent.appendChild(couponDiscount)
+
+  coupon.appendChild(couponContent)
+
+  lista.appendChild(coupon)
 });
 
 }
