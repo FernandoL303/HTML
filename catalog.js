@@ -7,10 +7,11 @@ const supabaseKey= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
 const supabase=createClient(supabaseUrl,supabaseKey)
 
 window.onload=innit;
-var searchbar;
-var filterCategory;
 
+var searchbar;
+var filterCategory="TODOS";
 var cardDivs=[];
+var filterbtns=[];
 
 
 
@@ -18,6 +19,7 @@ async function innit(){
     searchbar=document.getElementById('search-input')
     searchbar.onkeyup=search;
 
+    getGiros();
     getCatalog();
 }
 
@@ -78,7 +80,7 @@ async function getCatalog(){
         card.appendChild(companyContent)
 
         
-        card.data=`${company.nombre}`.toUpperCase()
+        card.data=`${company.nombre}`.toUpperCase() + "|"+`${company.giro}`.toUpperCase();
         
 
         cardDivs.push(card)
@@ -87,15 +89,62 @@ async function getCatalog(){
 
 }
 
+async function getGiros(){
+    let { data, error } = await supabase
+    .rpc('getgiros')
+    if (error) console.error(error)
+    
+    const lista = document.getElementById('filter-scroll')
+    lista.innerHTML=''
+
+    var butonAll=document.createElement('button')
+    butonAll.classList.add('filter-btn')
+    butonAll.classList.add('active')
+    butonAll.textContent="Todos"
+    butonAll.addEventListener('click',changeGiro)
+    filterbtns.push(butonAll)
+
+    lista.appendChild(butonAll)
+
+
+    data.forEach(giro=>{
+
+        const button=document.createElement('button')
+        button.classList.add('filter-btn');
+        button.classList.add('inactive')
+        button.textContent=`${giro.nombre}`
+        button.addEventListener('click',changeGiro)
+        filterbtns.push(button)
+
+        lista.appendChild(button);
+        
+    });
+
+}
+
+async function changeGiro(){
+    filterbtns.forEach(button=>{
+        button.classList.remove('active')
+        button.classList.add('inactive')
+    });
+
+    this.classList.remove('inactive')
+    this.classList.add('active')
+    filterCategory=this.textContent.toUpperCase();
+
+    search();
+}
+
 async function search(){
-    var input,filter,name,giro
+    var input,filter
     input=document.getElementById('search-input')
     filter=input.value.toUpperCase()
 
-
     cardDivs.forEach(card=>{
 
-        if(card.data.indexOf(filter)>-1){
+      const cardData=card.data.split('|');
+        
+        if(cardData[0].indexOf(filter)>-1 && (filterCategory==cardData[1]||filterCategory=="TODOS")){
             card.style.display=""
         }else{
             card.style.display="none"

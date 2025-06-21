@@ -6,9 +6,23 @@ const supabaseKey= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
 
 const supabase=createClient(supabaseUrl,supabaseKey)
 
-window.onload= obtenerDescuentos;
-
 var myid =1;
+
+window.onload= innit;
+
+
+var filterCategory="TODOS";
+
+var couponDivs=[];
+var filterbtns=[];
+
+
+
+async function innit(){
+
+  getGiros();
+  obtenerDescuentos();
+}
 
 async function obtenerDescuentos(){
 
@@ -17,9 +31,7 @@ async function obtenerDescuentos(){
     myid
   })
 if (error) console.error(error)
-  else{
-    console.log(data)
-  }
+  
 
     const lista=
 document.getElementById("coupon-list")
@@ -52,8 +64,7 @@ data.forEach(descuento => {
   const img=document.createElement('img')
   img.src=`${descuento.logourl}`
 
-  console.log(img.src)
- // img.alt=`${descuento.nombre} Logo`
+
 
   brandLogo.appendChild(img)
 
@@ -65,8 +76,76 @@ data.forEach(descuento => {
 
   coupon.appendChild(couponContent)
 
+  coupon.data=`${descuento.nombre}`.toUpperCase() + "|"+`${descuento.giro}`.toUpperCase();
+
+  couponDivs.push(coupon)
   lista.appendChild(coupon)
 });
 
+}
+
+
+async function getGiros(){
+    let { data, error } = await supabase
+    .rpc('getgiros')
+    if (error) console.error(error)
+    
+    const lista = document.getElementById('filter-scroll')
+    lista.innerHTML=''
+
+    var butonAll=document.createElement('button')
+    butonAll.classList.add('filter-btn')
+    butonAll.classList.add('active')
+    butonAll.textContent="Todos"
+    butonAll.addEventListener('click',changeGiro)
+    filterbtns.push(butonAll)
+
+    lista.appendChild(butonAll)
+
+
+    data.forEach(giro=>{
+
+        const button=document.createElement('button')
+        button.classList.add('filter-btn');
+        button.classList.add('inactive')
+        button.textContent=`${giro.nombre}`
+        button.addEventListener('click',changeGiro)
+        filterbtns.push(button)
+
+        lista.appendChild(button);
+        
+    });
+
+}
+
+async function changeGiro(){
+    filterbtns.forEach(button=>{
+        button.classList.remove('active')
+        button.classList.add('inactive')
+    });
+
+    this.classList.remove('inactive')
+    this.classList.add('active')
+    filterCategory=this.textContent.toUpperCase();
+
+    search();
+}
+
+async function search(){
+    var input
+    input=document.getElementById('search-input')
+    
+    couponDivs.forEach(coupon=>{
+
+      const couponData=coupon.data.split('|');
+        
+        if(filterCategory==couponData[1]||filterCategory=="TODOS"){
+            coupon.style.display=""
+        }else{
+            coupon.style.display="none"
+        }
+
+    });
+   
 }
 

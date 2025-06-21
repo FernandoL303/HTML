@@ -35,14 +35,9 @@
             <input type="text" class="search-input" id="search-input" placeholder="Buscar empresas...">
         </div>
       <!-- Filtros -->
-      <div class="filter-section">
-        <div class="filter-scroll">
-          <button class="filter-btn active">Todos</button>
-          <button class="filter-btn inactive">Restaurantes</button>
-          <button class="filter-btn inactive">Muebles</button>
-          <button class="filter-btn inactive">Hoteles</button>
-          <button class="filter-btn inactive">Ropa</button>
-          <button class="filter-btn inactive">Electronicos</button>
+      <div class="filter-section" id='filter-section'>
+        <div class="filter-scroll" id="filter-scroll">
+          
         </div>
       </div>
       <!-- Las fokin empresas -->
@@ -67,22 +62,5 @@
         <span>Perfil</span>
       </button>
     </nav>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    filterButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                        btn.classList.add('inactive');
-                    });
-                    this.classList.remove('inactive');
-                    this.classList.add('active');
-                });
-            });            
-        });
-    </script>
   </body>
 </html>
