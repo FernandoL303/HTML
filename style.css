@@ -315,22 +315,13 @@ nav.bottom-nav {
     
 .search-input {
   width: 100%;
-  padding: 8px 8px 8px 36px;
+  padding: 8px 8px 8px 16px;
   background-color: var(--third-color);
   border: none;
   border-radius: 8px;
   font-size: 14px;
   position: relative;
-}
-    
-.search-icon {
-  position: absolute;
-  left: 28px;
-  top: 10%;
-  transform: translateY(-50%);
-  color: var(--btn-color);
-  z-index: 1;
-}
+}   
 
 /*Empressas*/
 .companies-list {
@@ -413,7 +404,7 @@ nav.bottom-nav {
 
 .input-field{
   position: relative;
-  margin: 20px 0 0 0;
+  margin: 20px 20px 20px 20px;
 }
 .input-field input{
   width: 100%;
@@ -421,9 +412,9 @@ nav.bottom-nav {
   border-radius: 6px;
   font-size: 18px;
   padding: 0 15px;
-  border: 2px solid #404040;
+  border: 2px solid var(--btn-color);
   background: transparent;
-  color: #404040;
+  color: var(--btn-color);
   outline: none;
 }
 .input-field label{
@@ -431,13 +422,13 @@ nav.bottom-nav {
   top: 50%;
   left: 2%;
   transform: translateY(-50%);
-  color: #404040;
+  color: var(--btn-color);
   font-size: 19px;
   pointer-events: none;
   transition: 0.3s;
 }
 input:focus{
-  border: 2px solid #404040;
+  border: 2px solid var(--btn-color);
 }
 input:focus ~ label,
 input:valid ~ label{
@@ -445,7 +436,7 @@ input:valid ~ label{
   left: 15px;
   font-size: 16px;
   padding: 0 2px;
-  background: #fafafa;
+  background: var(--sec-color);
 }
 
 .contBtn {
@@ -458,23 +449,369 @@ input:valid ~ label{
   margin: 30px auto;
   min-height: 100px;
 }
-.btnCoupon {
-  cursor: pointer;
-  flex: 1 1 auto;
-  margin: 10px;
-  padding: 30px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;
-  box-shadow: 0 0 20px #eee;
-  border-radius: 10px;
-  background-image: linear-gradient(to right, #020024 0%, #090979 51%, #00D4FF 100%);
- }
 
- .btnCoupon:hover {
-  background-position: right center; 
+form {
+	padding: 24px;
+	border-radius: 10px;
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, .1);
+  font-family: 'Montserrat';
+	background: var(--sec-color);
+}
+.form-group {
+	margin-bottom: 6px;
+}
+.form-group:last-child {
+	margin-bottom: 0;
+}
+.form-group input {
+	display: none;
+}
+.form-group.select-all label {
+	font-size: 20px;
+	font-weight: 500;
+	margin-bottom: 24px;
+}
+label {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+	cursor: pointer;
+}
+label .checkbox {
+	width: 20px;
+	height: 20px;
+	background: var(--btn-color);
+	border-radius: 4px;
+	position: relative;
+	transition: .2s ease;
+	transition-delay: .2s;
+}
+label .checkbox::before {
+	content: '';
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	right: 2px;
+	bottom: 2px;
+	background: var(--main-color);
+	border-radius: 2.5px;
+	transition: .2s ease;
+	transition-delay: .2s;
+}
+.form-group input:checked + label .checkbox::before {
+	top: 10px;
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+	border-radius: 50%;
+	transition-delay: 0s;
+}
+.form-group input:checked + label .checkbox {
+	background: var(--main-accent);
+	transition-delay: 0s;
+}
+label .checkbox .check {
+	display: block;
+	width: 12px;
+	height: 6px;
+	position: absolute;
+	top: 6px;
+	left: 50%;
+	transform: translateX(-50%) rotateZ(-45deg);
+}
+label .checkbox .check::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 2px;
+	height: 0;
+	background: var(--main-color);
+	transition: .2s ease;
+	transition-delay: .2s;
+}
+label .checkbox .check::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background: var(--main-color);
+	transition: .2s ease;
+	transition-delay: 0s;
+}
+.form-group input:checked + label .checkbox .check::before {
+	height: 100%;
+	transition-delay: .2s;
+}
+.form-group input:checked + label .checkbox .check::after {
+	width: 100%;
+	transition-delay: .4s;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Login Container - Full Viewport */
+.container-login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-content {
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 26px -6px rgba(0,0,0,0.10);
+}
+
+.title-container {
+    text-align: left;
+    padding-bottom: 40px;
+}
+
+.title-container h1 {
+    color: var(--main-accent);
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.title-container h2 {
+    font-size: 30px;
+    font-weight: 600;
+    margin: 2px 0;
+}
+
+.login-inner-content {
+    padding: 10px;
+}
+
+.input-div {
+    position: relative;
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 5px;
+    padding: 5px 0;
+    border-bottom: 2px solid #d9d9d9;
+}
+
+.input-div.one {
+    margin-top: 0;
+}
+
+.i {
+    color: var(--btn-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-div > div {
+    position: relative;
+    height: 45px;
+}
+
+.input-div > div > h5 {
+    position: absolute;
+    font-weight: 400;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--btn-color);
+    font-size: 15px;
+    pointer-events: none;
+    transition: none;
+}
+
+.input-login {
+    font-weight: 400;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0.5rem 0.7rem;
+    font-size: 15px;
+    color: var(--btn-color);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.input-login:focus + h5,
+.input-login:not(:empty) + h5 {
+    display: none;
+}
+
+.input-login::placeholder {
+    color: transparent;
+}
+
+.input-login:focus::placeholder {
+    color: var(--btn-color);
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    height: 50px;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(to right, #153b7d, #1e52ba, #4c76eb);
+    background-size: 200%;
+    font-size: 1.2rem;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.btn:hover {
+    background-position: right;
+}
+
+
+
+
+
+
+/* Profile Section */
+.profile-container {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: var(--main-color);
+  margin: 60px 0px 0px 0px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--third-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+.profile-pic i {
+  font-size: 40px;
+  color: var(--btn-color);
+}
+
+.profile-info h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--btn-color);
+}
+
+.profile-info p {
+  font-size: 14px;
+  color: var(--btn-color);
+}
+
+.profile-actions {
+  display: grid;
+  gap: 5px;
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: var(--main-color);
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.profile-btn:hover {
+  background-color: var(--third-color);
+}
+
+.profile-btn i {
+  font-size: 20px;
+  margin-right: 15px;
+  color: var(--main-accent);
+}
+
+.profile-btn span {
+  font-size: 16px;
+  color: var(--btn-color);
+}
+
+@media (max-width: 800px) {
+    .container-login {
+        padding: 0;
+        align-items: flex-start;
+    }
+    
+    .login-content {
+        max-width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .title-container {
+        padding-bottom: 30px;
+    }
+    
+    .title-container h1,
+    .title-container h2 {
+        font-size: 24px;
+    }
+    
+    .input-div {
+        width: 100%;
+    }
+    
+    /* Adjust input fields for mobile */
+    .input-div > div > h5 {
+        font-size: 14px;
+    }
+    
+    .input-login {
+        font-size: 14px;
+    }
+    
+    .btn {
+        height: 45px;
+        font-size: 1rem;
+    }
 }
 
 

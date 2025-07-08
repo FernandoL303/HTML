@@ -28,21 +28,43 @@ document.addEventListener("DOMContentLoaded", () => {
     
   //Boton Perfil
   profileBtn.addEventListener('click', function() {
-
+      window.location.href = "Perfil.html";
   });
 
+  const selectAll = document.querySelector('.form-group.select-all input');
+		const allCheckbox = document.querySelectorAll('.form-group:not(.select-all) input');
+		let listBoolean = [];
 
-  const colorPicker = document.getElementById("colorPicker");
-  const coupons = document.querySelectorAll(".coupon");
+		allCheckbox.forEach(item=> {
+			item.addEventListener('change', function () {
+				allCheckbox.forEach(i=> {
+					listBoolean.push(i.checked);
+				})
+				if(listBoolean.includes(false)) {
+					selectAll.checked = false;
+				} else {
+					selectAll.checked = true;
+				}
+				listBoolean = []
+			})
+		})
 
-  if (colorPicker) {
-    colorPicker.addEventListener("input", () => {
-      const selectedColor = colorPicker.value;
-      coupons.forEach(coupon => {
-        coupon.style.backgroundColor = selectedColor;
-      });
-    });
-  }
+		selectAll.addEventListener('change', function () {
+			if(this.checked) {
+				allCheckbox.forEach(i=> {
+					i.checked = true;
+				})
+			} else {
+				allCheckbox.forEach(i=> {
+					i.checked = false;
+				})
+			}
+		})
+  
+
+
+
+
 
   const input = document.getElementById("input");
   const couponText = document.querySelector(".coupon-text");

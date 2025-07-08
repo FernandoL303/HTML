@@ -14,7 +14,6 @@
     <script type="module" src="main.js"></script> 
   </head>
   <body>
-    <!-- Menu de Arriba -->
     <nav class="top-nav">
       <button class="nav-btn" id="home-btn">
         <i class="ri-home-line"></i>
@@ -24,22 +23,36 @@
         <i class="ri-notification-3-line" id="noti-btn"></i>
       </button>
     </nav>
-    
-    <!-- Todo lo de en medio -->
-    <div class="coupon-container">
-      <!-- Filtros -->
-      <div class="filter-section">
-        <div class="filter-scroll" id="filter-scroll">      
+     <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-pic">
+                <i class="ri-user-fill"></i>
+            </div>
+            <div class="profile-info">
+                <h2>Nombre de Usuario</h2>
+                <p>PendejoVirgen@chingatumadre.com</p>
+            </div>
         </div>
-      </div>
-        
-      <!-- Cupones(Aqui pon esa madre) -->
-      <div class="coupons-section" id="coupon-list">
-        
-      </div>
+
+        <div class="profile-actions">
+            <button class="profile-btn">
+                <i class="ri-user-settings-line"></i>
+                <span>Mi Perfil</span>
+            </button>
+            <button class="profile-btn">
+                <i class="ri-building-2-line"></i>
+                <span>Mi Empresa</span>
+            </button>
+            <button class="profile-btn">
+                <i class="ri-brush-line"></i>
+                <span>Tema</span>
+            </button>
+            <button class="profile-btn">
+                <i class="ri-logout-box-r-line"></i>
+                <span>Cerrar Sesión</span>
+            </button>
+        </div>
     </div>
-    
-    <!-- Menu de Abajo -->
     <nav class="bottom-nav">
       <button class="nav-item" id="catalog-btn">
         <i class="ri-store-2-line"></i>
@@ -56,23 +69,5 @@
         <span>Perfil</span>
       </button>
     </nav>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    filterButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                        btn.classList.add('inactive');
-                    });
-                    
-                    this.classList.remove('inactive');
-                    this.classList.add('active');
-                });
-            });            
-        });
-    </script>
   </body>
 </html>

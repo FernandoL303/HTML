@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset = "UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Red de Afiliados</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="BotonesMenu.js"></script>
+    <script type="module" src="main.js"></script> 
+  </head>
+  <body>
+    <div class="container-login">
+        <div class="login-content">
+            <form action="#">
+                <div class="title-container">
+                    <h1>Iniciar Sesion</h1>
+                    <h2>Red de Afiliados Canaco</h2>
+                </div>
+                <div class="login-inner-content">
+                    <div class="input-div one">
+                        <div class="i">
+                            <i class="ri-user-line"></i>
+                        </div>
+                        <div class="div">
+                            <input type="text" class="input-login" placeholder="Usuario" required>
+                            <h5>Usuario</h5>
+                        </div>
+                    </div>
+                    <div class="input-div pass">
+                        <div class="i">
+                            <i class="ri-lock-line"></i>
+                        </div>
+                        <div class="div">
+                            <input id="pswrd" type="password" class="input-login" placeholder="Contraseña" required>
+                            <h5>Contraseña</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="submit" class="btn" value="Login">
+            </form>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const inputs = document.querySelectorAll('.input-login');
+    
+        inputs.forEach(input => {
+        // Initialize - hide placeholder if input has value
+            if(input.value) {
+                input.nextElementSibling.style.opacity = '0';
+            }
+        
+        // Handle focus events
+            input.addEventListener('focus', function() {
+                this.nextElementSibling.style.opacity = '0';
+            });
+        
+            // Handle blur events
+            input.addEventListener('blur', function() {
+                if(!this.value) {
+                    this.nextElementSibling.style.opacity = '1';
+                }
+            });
+        });
+    });
+</script>
+  </body>
+</html>
