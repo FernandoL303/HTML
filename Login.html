@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <meta charset = "UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Red de Afiliados</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-    <script src="BotonesMenu.js"></script>
-    <script type="module" src="main.js"></script> 
+    <script type="module" src="login.js"></script> 
   </head>
   <body>
     <div class="container-login">
@@ -27,7 +27,7 @@
                             <i class="ri-user-line"></i>
                         </div>
                         <div class="div">
-                            <input type="text" class="input-login" placeholder="Usuario" required>
+                            <input type="text" id="input-login" class="input-login" placeholder="Usuario" required>
                             <h5>Usuario</h5>
                         </div>
                     </div>
@@ -36,13 +36,13 @@
                             <i class="ri-lock-line"></i>
                         </div>
                         <div class="div">
-                            <input id="pswrd" type="password" class="input-login" placeholder="Contraseña" required>
+                            <input id="input-password" type="password" class="input-login" placeholder="Contraseña" required>
                             <h5>Contraseña</h5>
                         </div>
                     </div>
                 </div>
 
-                <input type="submit" class="btn" value="Login">
+                <input type="submit" class="btn" value="Login" id="login-btn">
             </form>
         </div>
     </div>

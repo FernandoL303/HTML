@@ -1,10 +1,13 @@
-import {createClient} from 
+/*import {createClient} from 
 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
 
 const supabaseUrl = 'https://mmcgruaofxzxpecdhvpl.supabase.co'
 const supabaseKey= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1tY2dydWFvZnh6eHBlY2RodnBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3ODA2OTgsImV4cCI6MjA2NTM1NjY5OH0.KXigWjfRLrBJFGr_9LFYKwtCucy6AxkF5BNziULUASQ'
 
-const supabase=createClient(supabaseUrl,supabaseKey)
+const supabase=createClient(supabaseUrl,supabaseKey)*/
+
+import { supabase } from "./utils.js";
 
 window.onload=innit;
 
@@ -12,6 +15,7 @@ var searchbar;
 var filterCategory="TODOS";
 var cardDivs=[];
 var filterbtns=[];
+var activeGiros=[];
 
 
 
@@ -19,8 +23,9 @@ async function innit(){
     searchbar=document.getElementById('search-input')
     searchbar.onkeyup=search;
 
+    
+    await getCatalog();
     getGiros();
-    getCatalog();
 }
 
 
@@ -82,6 +87,10 @@ async function getCatalog(){
         
         card.data=`${company.nombre}`.toUpperCase() + "|"+`${company.giro}`.toUpperCase();
         
+         if(!activeGiros.includes(company.giro)){
+             
+             activeGiros.push(company.giro)   
+            }
 
         cardDivs.push(card)
         lista.appendChild(card)
@@ -89,7 +98,8 @@ async function getCatalog(){
 
 }
 
-async function getGiros(){
+
+ async function getGiros(){
     let { data, error } = await supabase
     .rpc('getgiros')
     if (error) console.error(error)
@@ -109,6 +119,11 @@ async function getGiros(){
 
     data.forEach(giro=>{
 
+      
+
+      if(activeGiros.includes(giro.nombre)){
+
+      
         const button=document.createElement('button')
         button.classList.add('filter-btn');
         button.classList.add('inactive')
@@ -117,7 +132,7 @@ async function getGiros(){
         filterbtns.push(button)
 
         lista.appendChild(button);
-        
+      }
     });
 
 }

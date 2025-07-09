@@ -1,12 +1,12 @@
-import {createClient} from 
+/*import {createClient} from 
 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
 const supabaseUrl = 'https://mmcgruaofxzxpecdhvpl.supabase.co'
 const supabaseKey= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1tY2dydWFvZnh6eHBlY2RodnBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3ODA2OTgsImV4cCI6MjA2NTM1NjY5OH0.KXigWjfRLrBJFGr_9LFYKwtCucy6AxkF5BNziULUASQ'
 
-const supabase=createClient(supabaseUrl,supabaseKey)
-
-var myid =1;
+const supabase=createClient(supabaseUrl,supabaseKey) */
+import { supabase } from "./utils.js";
+var mysession;
 
 window.onload= innit;
 
@@ -15,22 +15,33 @@ var filterCategory="TODOS";
 
 var couponDivs=[];
 var filterbtns=[];
+var activeGiros=[];
 
 
 
 async function innit(){
 
+  const {data:{session}} = await supabase.auth.getSession();
+
+  mysession=session.user.id;
+
+ 
+  await getDescuentos();
+  
   getGiros();
-  obtenerDescuentos();
+  
 }
 
-async function obtenerDescuentos(){
+async function getDescuentos(){
 
-   let { data, error } = await supabase
+  
+   
+let { data, error } = await supabase
   .rpc('my_discounts', {
-    myid
+    mysession
   })
 if (error) console.error(error)
+
   
 
     const lista=
@@ -78,6 +89,14 @@ data.forEach(descuento => {
 
   coupon.data=`${descuento.nombre}`.toUpperCase() + "|"+`${descuento.giro}`.toUpperCase();
 
+
+
+  if(!activeGiros.includes(descuento.giro)){
+   
+    activeGiros.push(descuento.giro)
+    
+  }
+
   couponDivs.push(coupon)
   lista.appendChild(coupon)
 });
@@ -85,7 +104,7 @@ data.forEach(descuento => {
 }
 
 
-async function getGiros(){
+ async function getGiros(){
     let { data, error } = await supabase
     .rpc('getgiros')
     if (error) console.error(error)
@@ -105,6 +124,11 @@ async function getGiros(){
 
     data.forEach(giro=>{
 
+      
+
+      if(activeGiros.includes(giro.nombre)){
+
+      
         const button=document.createElement('button')
         button.classList.add('filter-btn');
         button.classList.add('inactive')
@@ -113,7 +137,7 @@ async function getGiros(){
         filterbtns.push(button)
 
         lista.appendChild(button);
-        
+      }
     });
 
 }
