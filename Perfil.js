@@ -12,5 +12,5 @@ async function innit(){
 async function signOut() {
     console.log('signingout')
     const { error } = await supabase.auth.signOut()
-    window.location.href = "index.html";
+    window.location.href = "login.html";
 }
