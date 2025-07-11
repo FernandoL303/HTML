@@ -550,6 +550,12 @@ label .checkbox .check::after {
 	transition-delay: .4s;
 }
 
+.percentage {
+  color: var(--text-color3);
+  margin-left: 5px;
+  font-size: 0.9em;
+}
+
 
 
 
@@ -664,7 +670,6 @@ label .checkbox .check::after {
 .input-login:focus::placeholder {
     color: var(--btn-color);
 }
-
 .btn {
     display: block;
     width: 100%;
@@ -683,6 +688,33 @@ label .checkbox .check::after {
 }
 
 .btn:hover {
+    background-position: right;
+}
+
+.cont-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;   
+}
+
+.btn1 {
+    display: block;
+    width: 60%;
+    height: 50px;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(to right, #153b7d, #1e52ba, #4c76eb);
+    background-size: 200%;
+    font-size: 1.2rem;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.btn1:hover {
     background-position: right;
 }
 
@@ -767,6 +799,72 @@ label .checkbox .check::after {
 .profile-btn span {
   font-size: 16px;
   color: var(--btn-color);
+}
+
+
+
+
+
+
+
+.editable-field {
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.field-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.field-title {
+  font-size: 14px;
+  color: #777;
+  font-weight: 500;
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  color: #1e52ba;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.field-value {
+  font-size: 16px;
+  color: #333;
+  padding: 8px 0;
+  display: block;
+  width: 100%;
+}
+
+.field-input {
+  display: none;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.editing .field-value {
+  display: none;
+}
+
+.editing .field-input {
+  display: block;
+}
+
+.editing .edit-btn i {
+   color: #4CAF50;
 }
 
 @media (max-width: 800px) {

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="module">
+        import {checkSession} from '/utils.js'  
+      checkSession();
+    </script>
+    <meta charset = "UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Red de Afiliados</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="BotonesMenu.js"></script>
+    <script type="module" src="Perfil.js"></script> 
+  </head>
+  <body>
+    <nav class="top-nav">
+      <button class="nav-btn" id="home-btn">
+        <i class="ri-home-line"></i>
+      </button>
+      <h1 class="logo">Red De Afiliados</h1>
+      <button class="nav-btn">
+        <i class="ri-notification-3-line" id="noti-btn"></i>
+      </button>
+    </nav>
+     <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-pic">
+                <i class="ri-user-fill"></i>
+            </div>
+            <div class="profile-info">
+                <h2>Empresa</h2>
+                <p>NombreUsuario</p>
+            </div>
+        </div>
+
+        <div class="editable-field">
+            <div class="field-header">
+                <span class="field-title">Nombre</span>
+                <button class="edit-btn" onclick="toggleEdit(this)">
+                    <i class="ri-pencil-line"></i>
+                </button>
+            </div>
+            <span class="field-value">Bambinos</span>
+            <input type="text" class="field-input" value="">
+        </div>
+
+        <div class="editable-field">
+            <div class="field-header">
+                <span class="field-title">Correo Electrónico</span>
+                <button class="edit-btn" onclick="toggleEdit(this)">
+                    <i class="ri-pencil-line"></i>
+                </button>
+            </div>
+            <span class="field-value">usuario@ejemplo.com</span>
+            <input type="email" class="field-input" value="">
+        </div>
+        
+        <div class="editable-field">
+            <div class="field-header">
+                <span class="field-title">Telefono</span>
+                <button class="edit-btn" onclick="toggleEdit(this)">
+                    <i class="ri-pencil-line"></i>
+                </button>
+            </div>
+            <span class="field-value">6316969690</span>
+            <input type="number" class="field-input" value="">
+        </div>
+
+         <div class="editable-field">
+            <div class="field-header">
+                <span class="field-title">Giro</span>
+                <button class="edit-btn" onclick="toggleEdit(this)">
+                    <i class="ri-pencil-line"></i>
+                </button>
+            </div>
+            <span class="field-value">Restaurante</span>
+            <input type="text" class="field-input" value="">
+        </div>
+        
+    </div>
+    <nav class="bottom-nav">
+      <button class="nav-item" id="catalog-btn">
+        <i class="ri-store-2-line"></i>
+        <span>Catalogo</span>
+      </button>
+      <div class="nav-item nav-center" id="add-coupon-btn">
+        <div class="nav-center-btn">
+          <i class="ri-coupon-fill"></i>
+        </div>
+        <span class="nav-center-text">Añadir Cupon</span>
+      </div>
+      <button class="nav-item" id="profile-btn">
+        <i class="ri-user-line"></i>
+        <span>Perfil</span>
+      </button>
+    </nav>
+  </body>
+  <script>
+        function toggleEdit(button) {
+            const field = button.closest('.editable-field');
+            field.classList.toggle('editing');
+
+            const icon = button.querySelector('i');
+            if (field.classList.contains('editing')) {
+                icon.classList.remove('ri-pencil-line');
+                icon.classList.add('ri-check-line');
+                button.style.color = '#4CAF50';
+
+                const input = field.querySelector('.field-input');
+                input.focus();
+            } else {
+                icon.classList.remove('ri-check-line');
+                icon.classList.add('ri-pencil-line');
+                button.style.color = '#1e52ba';
+                
+                const input = field.querySelector('.field-input');
+                const valueDisplay = field.querySelector('.field-value');
+                if (input.value.trim() !== '') {
+                    if (input.type === 'password') {
+                        valueDisplay.textContent = '••••••••';
+                    } else {
+                        valueDisplay.textContent = input.value;
+                    }
+                }
+            }
+        }
+    </script>
+</html>

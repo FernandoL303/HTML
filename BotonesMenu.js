@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const catalogBtn = document.getElementById('catalog-btn');
   const addCouponBtn = document.getElementById('add-coupon-btn');
   const profileBtn = document.getElementById('profile-btn');
+  const myprofileBtn = document.getElementById('myprof-btn');
+  const myempBtn = document.getElementById('myemp-btn');
+  const themebtn = document.getElementById('theme-btn');
 
   //Boton Home
   homeBtn.addEventListener('click', function() {
@@ -29,6 +32,20 @@ document.addEventListener("DOMContentLoaded", () => {
   //Boton Perfil
   profileBtn.addEventListener('click', function() {
       window.location.href = "Perfil.html";
+  });
+ 
+  //Boton Mi Perfil
+  myprofileBtn.addEventListener('click', function() {
+      window.location.href = "MiPerfil.html";
+  });
+
+   //Boton Mi Empresa
+  myempBtn.addEventListener('click', function() {
+      window.location.href = "MiEmpresa.html";
+  });
+
+  themebtn.addEventListener('click', function() {
+      
   });
 
   const selectAll = document.querySelector('.form-group.select-all input');
