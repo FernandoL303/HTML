@@ -47,14 +47,24 @@
         <input type="number" id='input2' required spellcheck="false">
         <label>Descuento</label>
       </div>
+      <div class="cont-btn">
+        <input type="button" class="btn1" value="Crear" id="crear-btn">
+      </div>
       <div class="search-filter-container">
         <div class="search-container">
           <input type="text" class="search-input" id="search-input" placeholder="Buscar empresas...">
         </div>
-        <div class="filter-section" id='filter-section'>
-          <div class="filter-scroll" id="filter-scroll"></div>
+        <div class="filter-section">
+            <div class="filter-scroll">
+                <button class="filter-btn active">Todo</button>
+                <button class="filter-btn inactive">Construccion</button>
+                <button class="filter-btn inactive">Educacion</button>
+                <button class="filter-btn inactive">Marketing</button>
+                <button class="filter-btn inactive">Moda</button>
+                <button class="filter-btn inactive">Salud</button>
+            </div>
         </div>
-        <form id="list-form">
+        <form>
 		      <div class="form-group select-all">
 			      <input type="checkbox" id="select-all">
 			      <label for="select-all">
@@ -70,7 +80,7 @@
 				      <span class="checkbox">
 					      <span class="check"></span>
 				      </span>
-				    Bambinos
+				    Bambinos <span class="percentage">50%</span>
 			      </label>
 		      </div>
 		      <div class="form-group">
@@ -79,7 +89,7 @@
 				    <span class="checkbox">
 					    <span class="check"></span>
 				    </span>
-				    Taco Giro
+				    Taco Giro <span class="percentage">30%</span>
 			      </label>
 		      </div>
 	      </form>
@@ -103,4 +113,21 @@
       </button>
     </nav>
   </body>
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.classList.add('inactive');
+                    });
+                    
+                    this.classList.remove('inactive');
+                    this.classList.add('active');
+                });
+            });            
+        });
+    </script>
 </html>
