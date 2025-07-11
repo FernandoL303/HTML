@@ -15,7 +15,7 @@
     <title>Red de Afiliados</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     <script src="BotonesMenu.js" defer></script>
-    <script type="module" src="catalog.js"></script> 
+    <script type="module" src="CrearCupon.js"></script> 
   </head>
   <body>
   <!-- Menu de Arriba -->
@@ -34,17 +34,17 @@
           <div class="coupon-content">
             <div class="coupon-brand">
             <div class="brand-logo">
-            <img src="https://static.wixstatic.com/media/08bfe9_757c2c33c911412b8a4779bfc9f81086~mv2.png/v1/fill/w_324,h_244,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Bambinos%202.png" 
+            <img id="brand-logo" src="https://static.wixstatic.com/media/08bfe9_757c2c33c911412b8a4779bfc9f81086~mv2.png/v1/fill/w_324,h_244,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Bambinos%202.png" 
               alt="Bambinos Logo">
             </div>
-            <h2 class="brand-name">Bambinos</h2>
+            <h2 class="brand-name" id="brand-name">Bambinos</h2>
             </div>
-            <div class="coupon-discount">50%</div>
+            <div class="coupon-discount" id="coupon-discount">50%</div>
           </div>
         </div>
       </div>
       <div class="input-field">
-        <input type="text" id='input2' required spellcheck="false">
+        <input type="number" id='input2' required spellcheck="false">
         <label>Descuento</label>
       </div>
       <div class="search-filter-container">
@@ -54,7 +54,7 @@
         <div class="filter-section" id='filter-section'>
           <div class="filter-scroll" id="filter-scroll"></div>
         </div>
-        <form>
+        <form id="list-form">
 		      <div class="form-group select-all">
 			      <input type="checkbox" id="select-all">
 			      <label for="select-all">

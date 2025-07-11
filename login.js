@@ -32,6 +32,8 @@ if(error){
 
 if (data.session) {
     console.log("Usuario logueado:", data.session.user.id);
+
+    localStorage.setItem("user_id",data.session.user.id)
     access();
   } else {
     console.warn("sin sesion establecida")
@@ -40,5 +42,6 @@ if (data.session) {
 }
 
 async function access(){
+
     window.location.href = "index.html";
 }

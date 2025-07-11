@@ -15,3 +15,22 @@ export async function checkSession(){
        window.location.href = "login.html";
     }
 }
+
+export function getSession(){
+    const userID=localStorage.getItem("user_id")
+
+    if(userID)
+    {
+        return userID
+    }
+    else
+    {
+        const{data:{session}} = supabase.auth.getSession();
+
+        if(session){
+            localStorage.setItem("user_id",session.user.id)
+        }else{
+            window.location.href='login.html'
+        }
+    }
+}
