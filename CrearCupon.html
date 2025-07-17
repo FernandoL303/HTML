@@ -1,133 +1,379 @@
- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <script type="module">
-        import {checkSession} from '/utils.js'  
-      checkSession();
-    </script>
-    <meta charset = "UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" defer>
-    <title>Red de Afiliados</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-    <script src="BotonesMenu.js" defer></script>
-    <script type="module" src="CrearCupon.js"></script> 
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <script type="module">
+    import { checkSession } from '/utils.js'
+    checkSession();
+  </script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css" defer>
+  <title>Red de Afiliados</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <script src="BotonesMenu.js" defer></script>
+  <script type="module" src="CrearCupon.js"></script>>
+   <style>
+    .cont-btn {
+      margin-top: 10px;
+    }
+
+    .btn1 {
+      width: 80%;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(to right, var(--main-accent), var(--main-accent));
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(30, 82, 186, 0.3);
+    }
+
+    .btn1:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(30, 82, 186, 0.4);
+    }
+
+    .btn1:active {
+      transform: translateY(0);
+    }
+
+    form {
+      margin-top: 20px;
+      padding: 0;
+      background: none;
+      box-shadow: none;
+      overflow-x: hidden;
+    }
+
+    .form-group {
+      border-radius: 12px;
+      transition: var(--transition);
+      overflow: visible;
+      padding: 2px;
+    }
+
+    .form-group.select-all {
+      padding: 5px;
+      background: transparent;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      overflow: visible;
+    }
+    
+    .form-group input {
+      display: none;
+    }
+    
+    label {
+      display: flex;
+      align-items: center;
+      grid-gap: 16px;
+      cursor: pointer;
+      padding: 18px 20px;
+      border-radius: 12px;
+      transition: var(--transition);
+      position: relative;
+      z-index: 1;
+    }
+    
+    label:hover {
+      background: rgba(0, 0, 0, 0.03);
+    }
+    
+    .form-group input:checked + label {
+      background: var(--selected-bg);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transform: translateY(-2px);
+    }
+    
+    label .checkbox {
+      width: 24px;
+      height: 24px;
+      background: var(--btn-color);
+      border-radius: 6px;
+      position: relative;
+      transition: var(--transition);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    label .checkbox::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      right: 3px;
+      bottom: 3px;
+      background: var(--main-color);
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+    
+    .form-group input:checked + label .checkbox::before {
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border-radius: 50%;
+      background: var(--main-accent);
+    }
+    
+    .form-group input:checked + label .checkbox {
+      background: var(--main-accent);
+    }
+    
+    label .checkbox .check {
+      display: block;
+      width: 12px;
+      height: 6px;
+      position: relative;
+      transform: rotate(-45deg);
+      z-index: 2;
+    }
+    
+    label .checkbox .check::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 0;
+      background: var(--main-color);
+      transition: var(--transition);
+      transition-delay: .1s;
+    }
+    
+    label .checkbox .check::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--main-color);
+      transition: var(--transition);
+      transition-delay: 0s;
+    }
+    
+    .form-group input:checked + label .checkbox .check::before {
+      height: 100%;
+      transition-delay: .1s;
+    }
+    
+    .form-group input:checked + label .checkbox .check::after {
+      width: 100%;
+      transition-delay: .1s;
+    }
+    
+    .option-content {
+      flex-grow: 1;
+      font-weight: 500;
+      color: var(--text-color);
+    }
+    
+    .percentage {
+      color: var(--main-accent);
+      margin-left: 5px;
+      font-size: 0.9em;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
   <!-- Menu de Arriba -->
-    <nav class="top-nav">
-      <button class="nav-btn" id="home-btn">
-        <i class="ri-home-line"></i>
-      </button>
-      <h1 class="logo">Red De Afiliados</h1>
-      <button class="nav-btn">
-        <i class="ri-notification-3-line" id="noti-btn"></i>
-      </button>
-    </nav>
-    <div class="coupon-container">     
-      <div class="coupons-section">
-        <div class="coupon-card">
-          <div class="coupon-content">
-            <div class="coupon-brand">
+  <nav class="top-nav">
+    <button class="nav-btn" id="home-btn">
+      <i class="ri-home-line"></i>
+    </button>
+    <h1 class="logo">Red De Afiliados</h1>
+    <button class="nav-btn">
+      <i class="ri-notification-3-line" id="noti-btn"></i>
+    </button>
+  </nav>
+
+  <div class="coupon-container">
+    <div class="coupons-section">
+      <div class="coupon-card">
+        <div class="coupon-content">
+          <div class="coupon-brand">
             <div class="brand-logo">
-            <img id="brand-logo" src="https://static.wixstatic.com/media/08bfe9_757c2c33c911412b8a4779bfc9f81086~mv2.png/v1/fill/w_324,h_244,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Bambinos%202.png" 
-              alt="Bambinos Logo">
+              <img id="brand-logo"
+                src="https://static.wixstatic.com/media/08bfe9_757c2c33c911412b8a4779bfc9f81086~mv2.png/v1/fill/w_324,h_244,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Bambinos%202.png"
+                alt="Bambinos Logo">
             </div>
             <h2 class="brand-name" id="brand-name">Bambinos</h2>
-            </div>
-            <div class="coupon-discount" id="coupon-discount">50%</div>
           </div>
+          <div class="coupon-discount" id="coupon-discount">50%</div>
         </div>
-      </div>
-      <div class="input-field">
-        <input type="number" id='input2' required spellcheck="false">
-        <label>Descuento</label>
-      </div>
-      <div class="cont-btn">
-        <input type="button" class="btn1" value="Crear" id="crear-btn">
-      </div>
-      <div class="search-filter-container">
-        <div class="search-container">
-          <input type="text" class="search-input" id="search-input" placeholder="Buscar empresas...">
-        </div>
-        <div class="filter-section">
-            <div class="filter-scroll">
-                <button class="filter-btn active">Todo</button>
-                <button class="filter-btn inactive">Construccion</button>
-                <button class="filter-btn inactive">Educacion</button>
-                <button class="filter-btn inactive">Marketing</button>
-                <button class="filter-btn inactive">Moda</button>
-                <button class="filter-btn inactive">Salud</button>
-            </div>
-        </div>
-        <form>
-		      <div class="form-group select-all">
-			      <input type="checkbox" id="select-all">
-			      <label for="select-all">
-				      <span class="checkbox">
-					      <span class="check"></span>
-				      </span>
-				    Seleccionar Todo
-			      </label>
-		      </div>
-		      <div class="form-group">
-			      <input type="checkbox" id="web-developer">
-			      <label for="web-developer">
-				      <span class="checkbox">
-					      <span class="check"></span>
-				      </span>
-				    Bambinos <span class="percentage">50%</span>
-			      </label>
-		      </div>
-		      <div class="form-group">
-			      <input type="checkbox" id="web-designer">
-			      <label for="web-designer">
-				    <span class="checkbox">
-					    <span class="check"></span>
-				    </span>
-				    Taco Giro <span class="percentage">30%</span>
-			      </label>
-		      </div>
-	      </form>
       </div>
     </div>
-    <!-- Menu de Abajo -->
-    <nav class="bottom-nav">
-      <button class="nav-item" id="catalog-btn">
-        <i class="ri-store-2-line"></i>
-        <span>Catalogo</span>
-      </button>
-      <div class="nav-item nav-center" id="add-coupon-btn">
-        <div class="nav-center-btn">
-          <i class="ri-coupon-fill"></i>
-        </div>
-        <span class="nav-center-text">Añadir Cupon</span>
+
+    <div class="input-field">
+      <input type="number" id='input2' required spellcheck="false" min="1" max="100" value="50">
+      <label>Descuento (%)</label>
+    </div>
+
+    <div class="cont-btn">
+      <input type="button" class="btn1" value="Crear Cupón" id="crear-btn">
+    </div>
+
+    <div class="search-filter-container">
+      <div class="search-container">
+        <input type="text" class="search-input" id="search-input" placeholder="Buscar empresas...">
       </div>
-      <button class="nav-item" id="profile-btn">
-        <i class="ri-user-line"></i>
-        <span>Perfil</span>
-      </button>
-    </nav>
-  </body>
+
+      <div class="filter-section">
+        <div class="filter-scroll">
+          <button class="filter-btn active">Todo</button>
+          <button class="filter-btn inactive">Construccion</button>
+          <button class="filter-btn inactive">Educacion</button>
+          <button class="filter-btn inactive">Marketing</button>
+          <button class="filter-btn inactive">Moda</button>
+          <button class="filter-btn inactive">Salud</button>
+        </div>
+      </div>
+
+      <form>
+        <div class="form-group select-all">
+          <input type="checkbox" id="select-all">
+          <label for="select-all">
+            <span class="checkbox">
+              <span class="check"></span>
+            </span>
+            Seleccionar Todo
+          </label>
+        </div>
+
+        <div class="form-group">
+          <input type="checkbox" id="bambinos" checked>
+          <label for="bambinos">
+            <span class="checkbox">
+              <span class="check"></span>
+            </span>
+            <span class="option-content">Bambinos <span class="percentage">50%</span></span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <input type="checkbox" id="taco-giro">
+          <label for="taco-giro">
+            <span class="checkbox">
+              <span class="check"></span>
+            </span>
+            <span class="option-content">Taco Giro <span class="percentage">30%</span></span>
+          </label>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Menu de Abajo -->
+  <nav class="bottom-nav">
+    <button class="nav-item" id="catalog-btn">
+      <i class="ri-store-2-line"></i>
+      <span>Catalogo</span>
+    </button>
+    <div class="nav-item nav-center" id="add-coupon-btn">
+      <div class="nav-center-btn">
+        <i class="ri-coupon-fill"></i>
+      </div>
+      <span class="nav-center-text">Añadir Cupon</span>
+    </div>
+    <button class="nav-item" id="profile-btn">
+      <i class="ri-user-line"></i>
+      <span>Perfil</span>
+    </button>
+  </nav>
+
   <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    filterButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                        btn.classList.add('inactive');
-                    });
-                    
-                    this.classList.remove('inactive');
-                    this.classList.add('active');
-                });
-            });            
+    document.addEventListener('DOMContentLoaded', function () {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          filterButtons.forEach(btn => {
+            btn.classList.remove('active');
+            btn.classList.add('inactive');
+          });
+          this.classList.remove('inactive');
+          this.classList.add('active');
         });
-    </script>
+      });
+
+      const discountInput = document.getElementById('input2');
+      const couponDiscount = document.getElementById('coupon-discount');
+
+      discountInput.addEventListener('input', function () {
+        let discount = this.value;
+        if (discount > 100) discount = 100;
+        if (discount < 0) discount = 0;
+
+        couponDiscount.textContent = `${discount}%`;
+      });
+
+      const createBtn = document.getElementById('crear-btn');
+      createBtn.addEventListener('click', function () {
+        const discount = discountInput.value;
+        if (!discount || discount < 1) {
+          alert('Por favor ingresa un descuento válido');
+          return;
+        }
+
+        const selectedBusinesses = document.querySelectorAll('.form-group input:checked:not(#select-all)');
+        if (selectedBusinesses.length === 0) {
+          alert('Por favor selecciona al menos una empresa');
+          return;
+        }
+
+        alert(`Cupón creado exitosamente para ${selectedBusinesses.length} empresas con ${discount}% de descuento`);
+      });
+
+      const selectAll = document.getElementById('select-all');
+      const checkboxes = document.querySelectorAll('.form-group:not(.select-all) input[type="checkbox"]');
+
+      selectAll.addEventListener('change', function () {
+        checkboxes.forEach(checkbox => {
+          checkbox.checked = this.checked;
+        });
+      });
+
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+          let allChecked = true;
+          checkboxes.forEach(cb => {
+            if (!cb.checked) allChecked = false;
+          });
+          selectAll.checked = allChecked;
+        });
+      });
+
+      const searchInput = document.getElementById('search-input');
+      searchInput.addEventListener('input', function () {
+        const searchTerm = this.value.toLowerCase();
+        const formGroups = document.querySelectorAll('.form-group:not(.select-all)');
+
+        formGroups.forEach(group => {
+          const label = group.querySelector('.option-content');
+          if (label.textContent.toLowerCase().includes(searchTerm)) {
+            group.style.display = 'block';
+          } else {
+            group.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
 </html>

@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: transparent;
 }
 
 :root{
@@ -33,9 +34,10 @@ body {
   min-height: 762px;
   margin: 0 auto;
   position: relative;
+  overflow-x: hidden;
 }
-        
-/* Menu de arriba */
+
+/*#region Menu Navegacion Superior*/       
 nav.top-nav {
   position: fixed;
   top: 0;
@@ -78,7 +80,8 @@ nav.top-nav {
 .nav-btn i {
   font-size: 24px;
   color: var(--btn-color);
-}       
+}
+/*#endregion */       
         
 /* Cuerpo Principal */
 .coupon-container {
@@ -87,6 +90,7 @@ nav.top-nav {
   padding-top: 64px;
   padding-bottom: 64px;
   overflow-y: auto;
+  animation: fadeIn 0.5s ease;
 }
         
 /* Filtros */
@@ -141,8 +145,7 @@ nav.top-nav {
   flex-direction: column;
   gap: 16px;
 }
-        
-/* Menu de Abajo */
+/*#region Menu de Navegacion Inferior*/       
 nav.bottom-nav {
   position: fixed;
   bottom: 0;
@@ -204,8 +207,9 @@ nav.bottom-nav {
 .nav-center-text {
   margin-top: 24px;
 }
+/*#endregion */
 
-/* Cupones */
+/*#region Cupones*/
 .coupon-card {
   --dash-color: rgba(255, 255, 255, 0.3);
   
@@ -298,6 +302,7 @@ nav.bottom-nav {
   font-size: 4rem;
   font-weight: 700;
 }
+/*#endregion */
 
 .search-filter-container {
   position: sticky;
@@ -439,134 +444,8 @@ input:valid ~ label{
   background: var(--sec-color);
 }
 
-.contBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
-  width: 80%;
-  margin: 30px auto;
-  min-height: 100px;
-}
 
-form {
-	padding: 24px;
-	border-radius: 10px;
-	box-shadow: 4px 4px 10px rgba(0, 0, 0, .1);
-  font-family: 'Montserrat';
-	background: var(--sec-color);
-}
-.form-group {
-	margin-bottom: 6px;
-}
-.form-group:last-child {
-	margin-bottom: 0;
-}
-.form-group input {
-	display: none;
-}
-.form-group.select-all label {
-	font-size: 20px;
-	font-weight: 500;
-	margin-bottom: 24px;
-}
-label {
-	display: flex;
-	align-items: center;
-	grid-gap: 16px;
-	cursor: pointer;
-}
-label .checkbox {
-	width: 20px;
-	height: 20px;
-	background: var(--btn-color);
-	border-radius: 4px;
-	position: relative;
-	transition: .2s ease;
-	transition-delay: .2s;
-}
-label .checkbox::before {
-	content: '';
-	position: absolute;
-	top: 2px;
-	left: 2px;
-	right: 2px;
-	bottom: 2px;
-	background: var(--main-color);
-	border-radius: 2.5px;
-	transition: .2s ease;
-	transition-delay: .2s;
-}
-.form-group input:checked + label .checkbox::before {
-	top: 10px;
-	left: 10px;
-	right: 10px;
-	bottom: 10px;
-	border-radius: 50%;
-	transition-delay: 0s;
-}
-.form-group input:checked + label .checkbox {
-	background: var(--main-accent);
-	transition-delay: 0s;
-}
-label .checkbox .check {
-	display: block;
-	width: 12px;
-	height: 6px;
-	position: absolute;
-	top: 6px;
-	left: 50%;
-	transform: translateX(-50%) rotateZ(-45deg);
-}
-label .checkbox .check::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 2px;
-	height: 0;
-	background: var(--main-color);
-	transition: .2s ease;
-	transition-delay: .2s;
-}
-label .checkbox .check::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 0;
-	height: 2px;
-	background: var(--main-color);
-	transition: .2s ease;
-	transition-delay: 0s;
-}
-.form-group input:checked + label .checkbox .check::before {
-	height: 100%;
-	transition-delay: .2s;
-}
-.form-group input:checked + label .checkbox .check::after {
-	width: 100%;
-	transition-delay: .4s;
-}
-
-.percentage {
-  color: var(--text-color3);
-  margin-left: 5px;
-  font-size: 0.9em;
-}
-
-
-
-
-
-
-
-
-
-
-
-/* Login Container - Full Viewport */
+/*#region Login*/
 .container-login {
     width: 100vw;
     height: 100vh;
@@ -717,13 +596,9 @@ label .checkbox .check::after {
 .btn1:hover {
     background-position: right;
 }
+/*#endregion */
 
-
-
-
-
-
-/* Profile Section */
+/*#region Mi Perfil y Mi Empresa*/
 .profile-container {
   width: 100%;
   height: 100%;
@@ -731,6 +606,7 @@ label .checkbox .check::after {
   background-color: var(--main-color);
   margin: 60px 0px 0px 0px;
   box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  animation: fadeIn 0.5s ease;
 }
 
 .profile-header {
@@ -760,7 +636,7 @@ label .checkbox .check::after {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 5px;
-  color: var(--btn-color);
+  color: var(--main-accent);
 }
 
 .profile-info p {
@@ -801,12 +677,6 @@ label .checkbox .check::after {
   color: var(--btn-color);
 }
 
-
-
-
-
-
-
 .editable-field {
   margin-bottom: 25px;
   border-bottom: 1px solid #eee;
@@ -822,19 +692,26 @@ label .checkbox .check::after {
 
 .field-title {
   font-size: 14px;
-  color: #777;
+  color: var(--text-color3);
   font-weight: 500;
 }
 
 .edit-btn {
   background: none;
   border: none;
-  color: #1e52ba;
+  color: var(--main-accent);
   cursor: pointer;
   font-size: 16px;
   display: flex;
   align-items: center;
   gap: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.edit-btn:hover {
+  background-color: #f0f8ff;
 }
 
 .field-value {
@@ -848,9 +725,9 @@ label .checkbox .check::after {
 .field-input {
   display: none;
   width: 100%;
-  padding: 8px 10px;
+  padding: 12px 15px;
   border: 1px solid #ddd;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 16px;
   margin-top: 5px;
 }
@@ -860,12 +737,243 @@ label .checkbox .check::after {
 }
 
 .editing .field-input {
-  display: block;
+   display: block;
 }
 
 .editing .edit-btn i {
-   color: #4CAF50;
+  color: var(--success);
 }
+
+
+.status-message {
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 14px;
+  display: none;
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  display: block;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  display: block;
+}
+
+.company-container {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: var(--main-color);
+  margin: 60px 0px 0px 0px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.company-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--main-color);
+}
+
+.company-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--main-accent), var(--main-accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-right: 20px;
+}
+
+.company-icon i {
+  font-size: 32px;
+}
+
+.company-info{
+  display: grid;
+  align-items: center;
+}
+
+.company-info h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: -10px;
+  color: var(--main-accent);
+}
+
+.company-info p {
+  font-size: 14px;
+  color: var(--btn-color);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.password-modal {
+  background: white;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+  transform: translateY(-20px);
+  transition: transform 0.4s;
+}
+
+.modal-overlay.active .password-modal {
+  transform: translateY(0);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--main-accent);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--dark-gray);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.close-btn:hover {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.modal-body {
+  margin-bottom: 25px;
+}
+
+.form-pass {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.form-pass label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 40px 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--light-accent);
+  box-shadow: 0 0 0 2px rgba(30, 82, 186, 0.2);
+}
+
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  top: 0px;
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer;
+  font-size: 18px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 15px;
+}
+
+.modal-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.cancel-btn {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.confirm-btn {
+  background: linear-gradient(to right, var(--main-accent), var(--main-accent));
+  color: white;
+}
+
+.confirm-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+/*#endregion */
 
 @media (max-width: 800px) {
     .container-login {
@@ -911,5 +1019,6 @@ label .checkbox .check::after {
         font-size: 1rem;
     }
 }
+
 
 

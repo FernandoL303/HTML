@@ -1,121 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script type="module">
-        import {checkSession} from '/utils.js'  
-      checkSession();
-    </script>
-    <meta charset = "UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Red de Afiliados</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-    <script src="BotonesMenu.js"></script>
-    <script type="module" src="Perfil.js"></script> 
-  </head>
-  <body>
-    <nav class="top-nav">
-      <button class="nav-btn" id="home-btn">
-        <i class="ri-home-line"></i>
-      </button>
-      <h1 class="logo">Red De Afiliados</h1>
-      <button class="nav-btn">
-        <i class="ri-notification-3-line" id="noti-btn"></i>
-      </button>
-    </nav>
-     <div class="profile-container">
-        <div class="profile-header">
-            <div class="profile-pic">
-                <i class="ri-user-fill"></i>
-            </div>
-            <div class="profile-info">
-                <h2>Nombre de Usuario</h2>
-                <p>usuario@ejemplo.com</p>
-            </div>
-        </div>
+<head>
+  <script type="module">
+    import {checkSession} from '/utils.js'  
+    checkSession();
+  </script>
+  <meta charset = "UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Red de Afiliados</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <script src="BotonesMenu.js"></script>
+  <script type="module" src="Perfil.js"></script> 
+</head>
+<body>
+  <nav class="top-nav">
+    <button class="nav-btn" id="back-btn">
+      <i class="ri-arrow-left-line"></i>
+    </button>
+    <h1 class="logo">Mi Perfil</h1>
+    <button class="nav-btn">
+      <i class="ri-notification-3-line" id="noti-btn"></i>
+    </button>
+  </nav>
 
-        <div class="editable-field">
-            <div class="field-header">
-                <span class="field-title">Nombre</span>
-                <button class="edit-btn" onclick="toggleEdit(this)">
-                    <i class="ri-pencil-line"></i>
-                </button>
-            </div>
-            <span class="field-value">Pedrini Lira</span>
-            <input type="text" class="field-input" value="">
-        </div>
-
-        <div class="editable-field">
-            <div class="field-header">
-                <span class="field-title">Correo Electrónico</span>
-                <button class="edit-btn" onclick="toggleEdit(this)">
-                    <i class="ri-pencil-line"></i>
-                </button>
-            </div>
-            <span class="field-value">usuario@ejemplo.com</span>
-            <input type="email" class="field-input" value="">
-        </div>
-
-        <div class="editable-field">
-            <div class="field-header">
-                <span class="field-title">Contraseña</span>
-                <button class="edit-btn" onclick="toggleEdit(this)">
-                    <i class="ri-pencil-line"></i>
-                </button>
-            </div>
-            <span class="field-value">••••••••</span>
-            <input type="password" class="field-input" placeholder="Nueva contraseña">
-        </div>
-    </div>
-    <nav class="bottom-nav">
-      <button class="nav-item" id="catalog-btn">
-        <i class="ri-store-2-line"></i>
-        <span>Catalogo</span>
-      </button>
-      <div class="nav-item nav-center" id="add-coupon-btn">
-        <div class="nav-center-btn">
-          <i class="ri-coupon-fill"></i>
-        </div>
-        <span class="nav-center-text">Añadir Cupon</span>
+  <div class="profile-container">
+    <div class="profile-header">
+      <div class="profile-pic">
+        <i class="ri-user-fill"></i>
       </div>
-      <button class="nav-item" id="profile-btn">
-        <i class="ri-user-line"></i>
-        <span>Perfil</span>
-      </button>
-    </nav>
-  </body>
-  <script>
-        function toggleEdit(button) {
-            const field = button.closest('.editable-field');
-            field.classList.toggle('editing');
+      <div class="profile-info">
+        <h2 id="profile-name">Masturbin</h2>
+        <p id="profile-email">masturbin@gmail.com</p>
+      </div>
+    </div>
+        
+    <div class="editable-field" id="name-field">
+      <div class="field-header">
+        <span class="field-title">Nombre</span>
+        <button class="edit-btn" id="name-edit-btn">
+          <i class="ri-pencil-line"></i> Editar
+        </button>
+      </div>
+      <span class="field-value" id="name-value">Masturbin</span>
+      <input type="text" class="field-input" id="name-input" value="">
+      <div class="status-message" id="name-message"></div>
+    </div>
 
-            const icon = button.querySelector('i');
-            if (field.classList.contains('editing')) {
-                icon.classList.remove('ri-pencil-line');
-                icon.classList.add('ri-check-line');
-                button.style.color = '#4CAF50';
+    <div class="editable-field" id="email-field">
+      <div class="field-header">
+        <span class="field-title">Correo Electrónico</span>
+        <button class="edit-btn" id="email-edit-btn">
+          <i class="ri-pencil-line"></i> Editar
+        </button>
+      </div>
+      <span class="field-value" id="email-value">masturbin@gmail.com</span>
+      <input type="email" class="field-input" id="email-input" value="">
+      <div class="status-message" id="email-message"></div>
+    </div>
 
-                const input = field.querySelector('.field-input');
-                input.focus();
-            } else {
-                icon.classList.remove('ri-check-line');
-                icon.classList.add('ri-pencil-line');
-                button.style.color = '#1e52ba';
+    <div class="editable-field" id="password-field">
+      <div class="field-header">
+        <span class="field-title">Contraseña</span>
+        <button class="edit-btn" id="password-edit-btn">
+          <i class="ri-pencil-line"></i> Cambiar
+        </button>
+      </div>
+      <span class="field-value">••••••••</span>
+    </div>
+
+    <div class="modal-overlay" id="password-modal">
+      <div class="password-modal">
+        <div class="modal-header">
+          <h2 class="modal-title">Cambiar Contraseña</h2>
+          <button class="close-btn" id="close-modal">
+            <i class="ri-close-line"></i>
+          </button>
+        </div>
+            
+        <div class="modal-body">
+          <div class="form-pass">
+            <label for="current-password">Contraseña Actual</label>
+            <input type="password" id="current-password" class="form-control" placeholder="Ingresa tu contraseña actual">
+            <button class="password-toggle" id="toggle-current">
+              <i class="ri-eye-line"></i>
+            </button>
+          </div>
                 
-                const input = field.querySelector('.field-input');
-                const valueDisplay = field.querySelector('.field-value');
-                if (input.value.trim() !== '') {
-                    if (input.type === 'password') {
-                        valueDisplay.textContent = '••••••••';
-                    } else {
-                        valueDisplay.textContent = input.value;
-                    }
-                }
-            }
+          <div class="form-pass">
+            <label for="new-password">Nueva Contraseña</label>
+            <input type="password" id="new-password" class="form-control" placeholder="Crea una nueva contraseña">
+            <button class="password-toggle" id="toggle-new">
+              <i class="ri-eye-line"></i>
+            </button>
+          </div>
+
+          <div class="status-message" id="password-message"></div>
+        </div>
+            
+        <div class="modal-footer">
+                <button class="modal-btn cancel-btn" id="cancel-change">Cancelar</button>
+                <button class="modal-btn confirm-btn" id="confirm-change">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Deje todo el codigo aqui por que no sabia donde lo querias, muevelo a donde mas te convenga-->
+  <script>
+    //Todo el pedo del pop up de la contra
+    const passwordEditBtn = document.getElementById('password-edit-btn');
+    const passwordModal = document.getElementById('password-modal');
+    const closeModalBtn = document.getElementById('close-modal');
+    const cancelBtn = document.getElementById('cancel-change');
+    const confirmBtn = document.getElementById('confirm-change');
+    const passwordMessage = document.getElementById('password-message');
+    //Botones de editar    
+    const nameEditBtn = document.getElementById('name-edit-btn');
+    const emailEditBtn = document.getElementById('email-edit-btn');
+    //Variables del Nombre      
+    const nameField = document.getElementById('name-field');
+    const nameValue = document.getElementById('name-value');
+    const nameInput = document.getElementById('name-input');
+    const nameMessage = document.getElementById('name-message');
+    //Variables del Mail    
+    const emailField = document.getElementById('email-field');
+    const emailValue = document.getElementById('email-value');
+    const emailInput = document.getElementById('email-input');
+    const emailMessage = document.getElementById('email-message');
+    //Variables del Perfil(Estas se deberian cargar desde la base de datos)    
+    const profileName = document.getElementById('profile-name');
+    const profileEmail = document.getElementById('profile-email');
+        
+    //El pedo del pop up
+    passwordEditBtn.addEventListener('click', () => {
+      passwordModal.classList.add('active');
+    });
+        
+    closeModalBtn.addEventListener('click', () => {
+      passwordModal.classList.remove('active');
+      resetPasswordModal();
+    });
+        
+    cancelBtn.addEventListener('click', () => {
+      passwordModal.classList.remove('active');
+      resetPasswordModal();
+    });
+        
+    passwordModal.addEventListener('click', (e) => {
+      if (e.target === passwordModal) {
+        passwordModal.classList.remove('active');
+        resetPasswordModal();
+      }
+    });
+        
+    function setupPasswordToggle(inputId, buttonId) {
+      const passwordInput = document.getElementById(inputId);
+      const toggleBtn = document.getElementById(buttonId);
+            
+      toggleBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+            
+        toggleBtn.innerHTML = type === 'password' 
+        ? '<i class="ri-eye-line"></i>' 
+        : '<i class="ri-eye-off-line"></i>';
+                
+        passwordInput.focus();
+      });
+    }
+        
+    setupPasswordToggle('current-password', 'toggle-current');
+    setupPasswordToggle('new-password', 'toggle-new');
+        
+    function resetPasswordModal() {
+      document.getElementById('current-password').value = '';
+      document.getElementById('new-password').value = '';
+      passwordMessage.textContent = '';
+      passwordMessage.className = 'status-message';
+    }
+        
+    //Este es el boton de confirmar so aqui deberias moverle para que se actualice en la base 
+    // y para que verifique si la contra actual es igual a la que hay en la base
+    confirmBtn.addEventListener('click', (e) => {
+      e.preventDefault();      
+      const currentPassword = document.getElementById('current-password').value;
+      const newPassword = document.getElementById('new-password').value;
+            
+      passwordMessage.textContent = '';
+      passwordMessage.className = 'status-message';
+            
+      if (!currentPassword) {
+        passwordMessage.textContent = 'Por favor ingresa tu contraseña actual';
+        passwordMessage.className = 'status-message error-message';
+        document.getElementById('current-password').focus();
+        return;
+      }
+            
+      if (!newPassword) {
+        passwordMessage.textContent = 'Por favor ingresa una nueva contraseña';
+        passwordMessage.className = 'status-message error-message';
+        document.getElementById('new-password').focus();
+        return;
+      }
+            
+      if (newPassword.length < 6) {
+        passwordMessage.textContent = 'La nueva contraseña debe tener al menos 6 caracteres';
+        passwordMessage.className = 'status-message error-message';
+        document.getElementById('new-password').focus();
+        return;
+      }
+            
+      //Mira aqui marca los exitos, pero pues son mentiras JAJAJAJAJA
+      passwordMessage.textContent = '¡Contraseña cambiada exitosamente!';
+      passwordMessage.className = 'status-message success-message';
+            
+      setTimeout(() => {
+        passwordModal.classList.remove('active');
+        document.getElementById('current-password').value = '';
+        document.getElementById('new-password').value = '';
+        passwordMessage.textContent = '';
+        passwordMessage.className = 'status-message';
+      }, 2000);
+    });
+        
+    document.getElementById('back-btn').addEventListener('click', () => {
+      history.back();
+    });
+        
+    //Estos son los otros campos (los que no tienen pop up)
+    function setupFieldEditing(editBtn, field, valueEl, inputEl, messageEl, isEmail = false) {
+      const editIcon = editBtn.querySelector('i');
+            
+      editBtn.addEventListener('click', () => {
+        field.classList.toggle('editing');
+                
+        if (field.classList.contains('editing')) {
+          editIcon.classList.remove('ri-pencil-line');
+          editIcon.classList.add('ri-check-line');
+          editBtn.innerHTML = '<i class="ri-check-line"></i> Guardar';
+          inputEl.focus();
+        } 
+        else {
+          editIcon.classList.remove('ri-check-line');
+          editIcon.classList.add('ri-pencil-line');
+          editBtn.innerHTML = '<i class="ri-pencil-line"></i> Editar';
+                    
+          //Aqui es donde se guardan so por aqui vas a tener que meter los queries
+          const newValue = inputEl.value.trim();
+                    
+          if (newValue === '') {
+            messageEl.textContent = 'Este campo no puede estar vacío';
+            messageEl.className = 'status-message error-message';
+            field.classList.add('editing');
+            editBtn.innerHTML = '<i class="ri-check-line"></i> Guardar';
+            inputEl.focus();
+            return;
+          }
+                    
+          if (isEmail && !validateEmail(newValue)) {
+            messageEl.textContent = 'Por favor ingresa un correo electrónico válido';
+            messageEl.className = 'status-message error-message';
+            field.classList.add('editing');
+            editBtn.innerHTML = '<i class="ri-check-line"></i> Guardar';
+            inputEl.focus();
+            return;
+          }
+                    
+          valueEl.textContent = newValue;
+          messageEl.textContent = '¡Cambios guardados exitosamente!';
+          messageEl.className = 'status-message success-message';
+                    
+          if (field === nameField) {
+            profileName.textContent = newValue;
+          } 
+          else if (field === emailField) {
+            profileEmail.textContent = newValue;
+          }
+                    
+          setTimeout(() => {
+            messageEl.textContent = '';
+            messageEl.className = 'status-message';
+          }, 3000);
         }
-    </script>
+      });
+    }
+        
+    // Valida que el correo sea un correo ( yo no hice este, pero sirve :D )
+    function validateEmail(email) {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+        
+    setupFieldEditing(nameEditBtn, nameField, nameValue, nameInput, nameMessage);
+    setupFieldEditing(emailEditBtn, emailField, emailValue, emailInput, emailMessage, true);
+    setupFieldEditing(companyEditBtn, companyField, companyValue, companyInput, companyMessage);
+        
+    document.addEventListener('click', (e) => {
+      const fields = [nameField, emailField, companyField];
+            
+      fields.forEach(field => {
+        if (field.classList.contains('editing') && !field.contains(e.target) && e.target !== nameEditBtn && e.target !== emailEditBtn && e.target !== companyEditBtn) {                    
+          const editBtn = field.querySelector('.edit-btn');
+          editBtn.click();
+        }
+      });
+    });
+  </script>
+</body>
 </html>

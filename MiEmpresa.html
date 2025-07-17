@@ -1,133 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script type="module">
-        import {checkSession} from '/utils.js'  
-      checkSession();
-    </script>
-    <meta charset = "UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Red de Afiliados</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-    <script src="BotonesMenu.js"></script>
-    <script type="module" src="Perfil.js"></script> 
-  </head>
-  <body>
-    <nav class="top-nav">
-      <button class="nav-btn" id="home-btn">
-        <i class="ri-home-line"></i>
-      </button>
-      <h1 class="logo">Red De Afiliados</h1>
-      <button class="nav-btn">
-        <i class="ri-notification-3-line" id="noti-btn"></i>
-      </button>
-    </nav>
-     <div class="profile-container">
-        <div class="profile-header">
-            <div class="profile-pic">
-                <i class="ri-user-fill"></i>
-            </div>
-            <div class="profile-info">
-                <h2>Empresa</h2>
-                <p>NombreUsuario</p>
-            </div>
-        </div>
+<head>
+  <script type="module">
+    import {checkSession} from '/utils.js'  
+  checkSession();
+  </script>
+  <meta charset = "UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Red de Afiliados</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <script src="BotonesMenu.js"></script>
+  <script type="module" src="Perfil.js"></script> 
 
-        <div class="editable-field">
-            <div class="field-header">
-                <span class="field-title">Nombre</span>
-                <button class="edit-btn" onclick="toggleEdit(this)">
-                    <i class="ri-pencil-line"></i>
-                </button>
-            </div>
-            <span class="field-value">Bambinos</span>
-            <input type="text" class="field-input" value="">
-        </div>
+</head>
+<body>
+  <nav class="top-nav">
+    <button class="nav-btn" id="back-btn">
+      <i class="ri-arrow-left-line"></i>
+    </button>
+    <h1 class="logo">Mi Empresa</h1>
+    <button class="nav-btn">
+      <i class="ri-notification-3-line" id="noti-btn"></i>
+    </button>
+  </nav>
 
-        <div class="editable-field">
-            <div class="field-header">
-                <span class="field-title">Correo Electrónico</span>
-                <button class="edit-btn" onclick="toggleEdit(this)">
-                    <i class="ri-pencil-line"></i>
-                </button>
-            </div>
-            <span class="field-value">usuario@ejemplo.com</span>
-            <input type="email" class="field-input" value="">
-        </div>
-        
-        <div class="editable-field">
-            <div class="field-header">
-                <span class="field-title">Telefono</span>
-                <button class="edit-btn" onclick="toggleEdit(this)">
-                    <i class="ri-pencil-line"></i>
-                </button>
-            </div>
-            <span class="field-value">6316969690</span>
-            <input type="number" class="field-input" value="">
-        </div>
-
-         <div class="editable-field">
-            <div class="field-header">
-                <span class="field-title">Giro</span>
-                <button class="edit-btn" onclick="toggleEdit(this)">
-                    <i class="ri-pencil-line"></i>
-                </button>
-            </div>
-            <span class="field-value">Restaurante</span>
-            <input type="text" class="field-input" value="">
-        </div>
-        
-    </div>
-    <nav class="bottom-nav">
-      <button class="nav-item" id="catalog-btn">
-        <i class="ri-store-2-line"></i>
-        <span>Catalogo</span>
-      </button>
-      <div class="nav-item nav-center" id="add-coupon-btn">
-        <div class="nav-center-btn">
-          <i class="ri-coupon-fill"></i>
-        </div>
-        <span class="nav-center-text">Añadir Cupon</span>
+  <div class="company-container">
+    <div class="company-header">
+      <div class="company-icon">
+        <i class="ri-building-2-fill"></i>
       </div>
-      <button class="nav-item" id="profile-btn">
-        <i class="ri-user-line"></i>
-        <span>Perfil</span>
-      </button>
-    </nav>
-  </body>
-  <script>
-        function toggleEdit(button) {
-            const field = button.closest('.editable-field');
-            field.classList.toggle('editing');
+      <div class="company-info">
+        <h1>Sexini</h1>
+        <p>Informacion de la empresa</p>
+      </div>
+    </div>
 
-            const icon = button.querySelector('i');
-            if (field.classList.contains('editing')) {
-                icon.classList.remove('ri-pencil-line');
-                icon.classList.add('ri-check-line');
-                button.style.color = '#4CAF50';
+    <div class="editable-field" id="company-name-field">
+      <div class="field-header">
+        <span class="field-title">Nombre de la empresa</span>
+        <button class="edit-btn" id="company-name-edit-btn">
+          <i class="ri-pencil-line"></i> Editar
+        </button>
+      </div>
+      <span class="field-value" id="company-name-value">Sexini</span>
+      <input type="text" class="field-input" id="company-name-input" value="">
+      <div class="status-message" id="company-name-message"></div>
+    </div>
 
-                const input = field.querySelector('.field-input');
-                input.focus();
-            } else {
-                icon.classList.remove('ri-check-line');
-                icon.classList.add('ri-pencil-line');
-                button.style.color = '#1e52ba';
+    <div class="editable-field" id="company-email-field">
+      <div class="field-header">
+        <span class="field-title">Correo Electrónico</span>
+        <button class="edit-btn" id="company-email-edit-btn">
+          <i class="ri-pencil-line"></i> Editar
+        </button>
+      </div>
+      <span class="field-value" id="company-email-value">contacto@sexini.com</span>
+      <input type="email" class="field-input" id="company-email-input" value="">
+      <div class="status-message" id="company-email-message"></div>
+    </div>
+
+    <div class="editable-field" id="company-phone-field">
+      <div class="field-header">
+        <span class="field-title">Teléfono</span>
+        <button class="edit-btn" id="company-phone-edit-btn">
+          <i class="ri-pencil-line"></i> Editar
+        </button>
+      </div>
+      <span class="field-value" id="company-phone-value">631 696 9696</span>
+      <input type="tel" class="field-input" id="company-phone-input" value="">
+      <div class="status-message" id="company-phone-message"></div>
+    </div>
+
+    <div class="editable-field" id="company-industry-field">
+      <div class="field-header">
+        <span class="field-title">Giro</span>
+        <button class="edit-btn" id="company-industry-edit-btn">
+          <i class="ri-pencil-line"></i> Editar
+        </button>
+      </div>
+      <span class="field-value" id="company-industry-value">Sexo</span>
+      <input type="text" class="field-input" id="company-industry-input" value="">
+      <div class="status-message" id="company-industry-message"></div>
+    </div>
+  </div>
+
+<script>
+  const backBtn = document.getElementById('back-btn');
+        
+  const companyNameField = document.getElementById('company-name-field');
+  const companyNameValue = document.getElementById('company-name-value');
+  const companyNameInput = document.getElementById('company-name-input');
+  const companyNameMessage = document.getElementById('company-name-message');
+  const companyNameEditBtn = document.getElementById('company-name-edit-btn');
+        
+  const companyEmailField = document.getElementById('company-email-field');
+  const companyEmailValue = document.getElementById('company-email-value');
+  const companyEmailInput = document.getElementById('company-email-input');
+  const companyEmailMessage = document.getElementById('company-email-message');
+  const companyEmailEditBtn = document.getElementById('company-email-edit-btn');
+        
+  const companyPhoneField = document.getElementById('company-phone-field');
+  const companyPhoneValue = document.getElementById('company-phone-value');
+  const companyPhoneInput = document.getElementById('company-phone-input');
+  const companyPhoneMessage = document.getElementById('company-phone-message');
+  const companyPhoneEditBtn = document.getElementById('company-phone-edit-btn');
+        
+  const companyIndustryField = document.getElementById('company-industry-field');
+  const companyIndustryValue = document.getElementById('company-industry-value');
+  const companyIndustryInput = document.getElementById('company-industry-input');
+  const companyIndustryMessage = document.getElementById('company-industry-message');
+  const companyIndustryEditBtn = document.getElementById('company-industry-edit-btn');
+        
+  backBtn.addEventListener('click', () => {
+    history.back();
+  });
+        
+  //Aqui es donde se editan
+  function setupFieldEditing(editBtn, field, valueEl, inputEl, messageEl, isEmail = false, isPhone = false) {
+    const editIcon = editBtn.querySelector('i');
+            
+    editBtn.addEventListener('click', () => {
+      field.classList.toggle('editing');
                 
-                const input = field.querySelector('.field-input');
-                const valueDisplay = field.querySelector('.field-value');
-                if (input.value.trim() !== '') {
-                    if (input.type === 'password') {
-                        valueDisplay.textContent = '••••••••';
-                    } else {
-                        valueDisplay.textContent = input.value;
-                    }
-                }
-            }
+      if (field.classList.contains('editing')) {
+        editIcon.classList.remove('ri-pencil-line');
+        editIcon.classList.add('ri-check-line');
+        editBtn.innerHTML = '<i class="ri-check-line"></i> Guardar';          
+        inputEl.focus();
+      } 
+      else {
+        editIcon.classList.remove('ri-check-line');
+        editIcon.classList.add('ri-pencil-line');
+        editBtn.innerHTML = '<i class="ri-pencil-line"></i> Editar';
+                    
+        const newValue = inputEl.value.trim();
+                    
+        if (newValue === '') {
+          messageEl.textContent = 'Este campo no puede estar vacío';
+          messageEl.className = 'status-message error-message';
+          field.classList.add('editing');
+          editBtn.innerHTML = '<i class="ri-check-line"></i> Guardar';
+          inputEl.focus();
+          return;
         }
-    </script>
+                    
+        if (isEmail && !validateEmail(newValue)) {
+          messageEl.textContent = 'Por favor ingresa un correo electrónico válido';
+          messageEl.className = 'status-message error-message';
+          field.classList.add('editing');
+          editBtn.innerHTML = '<i class="ri-check-line"></i> Guardar';
+          inputEl.focus();
+          return;
+        }
+                    
+        if (isPhone && !validatePhone(newValue)) {
+          messageEl.textContent = 'Por favor ingresa un número de teléfono válido';
+          messageEl.className = 'status-message error-message';
+          field.classList.add('editing');
+          editBtn.innerHTML = '<i class="ri-check-line"></i> Guardar';
+          inputEl.focus();
+          return;
+        }
+                    
+        valueEl.textContent = newValue;
+        messageEl.textContent = '¡Cambios guardados exitosamente!';
+        messageEl.className = 'status-message success-message';
+
+        setTimeout(() => {
+          messageEl.textContent = '';
+          messageEl.className = 'status-message';
+        }, 3000);
+      }
+    });
+  }
+        
+  function validateEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+        
+  function validatePhone(phone) {
+    const digits = phone.replace(/\D/g, '');
+    return digits.length >= 9;
+  }
+        
+  setupFieldEditing(companyNameEditBtn, companyNameField, companyNameValue, companyNameInput, companyNameMessage);
+  setupFieldEditing(companyEmailEditBtn, companyEmailField, companyEmailValue, companyEmailInput, companyEmailMessage, true);
+  setupFieldEditing(companyPhoneEditBtn, companyPhoneField, companyPhoneValue, companyPhoneInput, companyPhoneMessage, false, true);
+  setupFieldEditing(companyIndustryEditBtn, companyIndustryField, companyIndustryValue, companyIndustryInput, companyIndustryMessage);
+        
+  document.addEventListener('click', (e) => {
+    const fields = [
+      companyNameField, 
+      companyEmailField, 
+      companyPhoneField, 
+      companyIndustryField
+    ];
+            
+    fields.forEach(field => {
+      if (field.classList.contains('editing') && !field.contains(e.target) && !e.target.matches('.edit-btn, .edit-btn *')) {
+        const editBtn = field.querySelector('.edit-btn');
+        editBtn.click();
+      }
+    });
+  });
+</script>
+</body>
 </html>
